@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,400;0,500;0,700;1,300&family=Roboto:wght@400;500;700;900&family=Source+Code+Pro:wght@700&display=swap");
+
+.nav_component {
+  align-items: center;
+  display: flex;
+  padding: 5px;
+  background-color: #171436;
+  box-shadow: rgb(201 54 197 / 40%) 0px 5px, rgb(59 64 226 / 30%) 0px 10px;
+}
+.nav_items {
+  flex: 1;
+  padding-left: 15vw;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo_component {
+  width: 100px;
+  display: flex;
+  align-items: center;
+}
+.logo_name {
+  margin-left: 10px;
+}
+.logo_text {
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
+  background: rgb(2, 0, 36);
+  font-size: 1.7rem;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(218, 130, 250, 0.9730458833924195) 0%,
+    rgba(149, 196, 212, 1) 100%
+  );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.nav_item {
+  display: flex;
+}
+.nav_links {
+  list-style: none;
+  margin-right: 30px;
+  display: flex;
+}
+.nav_link {
+  padding: 5px;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 2px dashed transparent;
+}
+.nav_link:hover {
+  border: 2px dashed white;
+}
+.Signup_btn:hover {
+  background: rgb(2, 0, 36);
+
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(218, 130, 250, 0.9730458833924195) 0%,
+    rgba(149, 196, 212, 1) 100%
+  );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.nav_link {
+  margin: 5px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  color: white;
+  letter-spacing: 0.5px;
+}
+.Details {
+  margin-right: 30px;
+}
+.Details > a {
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: rgb(2, 0, 36);
+
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(218, 130, 250, 0.9730458833924195) 0%,
+    rgba(149, 196, 212, 1) 100%
+  );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.Signup_btn {
+  display: block;
+  padding: 5px;
+  background: transparent;
+  border: 2px dashed transparent;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  color: white;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+.logout_btn {
+  display: none;
+  padding: 5px;
+  background: transparent;
+  border: 2px dashed transparent;
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  color: white;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+.isActive {
+  display: none;
+}
+.noActive {
+  display: block;
+}
+.Policy_Route {
+  margin-top: 13px;
+  text-decoration: none;
+}

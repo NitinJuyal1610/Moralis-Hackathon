@@ -9,12 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@walletconnect/web3-provider": "^1.8.0",
+    "@web3auth/web3auth": "^2.1.2",
     "lottie": "^0.0.1",
     "lottie-web": "^5.9.6",
+    "magic-sdk": "^9.0.0",
+    "moralis-v1": "^1.11.0",
     "next": "12.3.0",
-    "react": "18.2.0",
+    "react": "^18.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "^6.3.0"
+    "react-moralis": "^1.4.2",
+    "react-router-dom": "^6.3.0",
+    "web3.storage": "^4.4.0"
   },
   "devDependencies": {
     "eslint": "8.23.0",

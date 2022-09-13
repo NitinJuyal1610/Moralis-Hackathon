@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styles from "../styles/Home.module.css";
 import Navbar from "./components/Navbar";
 import Register from "./Register";
-import Landing from "./landing";
+import Landing from "./Landing";
 import { useRouter } from "next/router";
 
 export default function Home() {

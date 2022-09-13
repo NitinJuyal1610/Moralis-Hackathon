@@ -3,8 +3,7 @@ import { useMoralis } from "react-moralis";
 
 import styles from "../styles/Register.module.css";
 const Register = () => {
-  const { signin, authenticate, isAuthenticated, signup, user, authError } =
-    useMoralis();
+  const { authenticate, isAuthenticated, signup } = useMoralis();
 
   // const [userLogged,setUserLogged] =useState(false)
   const [formData, setFormData] = useState({
@@ -154,18 +153,13 @@ const Register = () => {
         </div>
       ) : (
         <div className={styles.body}>
-          {authError && (
-            <p className={styles.error}>
-              {authError.name}
-
-              {authError.message}
-            </p>
-          )}
           <button
             className={styles.authButton}
-            onClick={() => authenticate({ provider: "metamask" })}
+            onClick={() =>
+              authenticate({ signingMessage: "Moralis Authentication" })
+            }
           >
-            Authenticate{console.log(user)}
+            Authenticate
           </button>
         </div>
       )}

@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import styles from "../../styles/Navbar.module.css"
-
+import { useMoralis } from 'react-moralis'
 export const Navbar = () => {
+    const { user, isAuthenticated, isAuthenticating, logout } = useMoralis()
+
     return (
         <div className={styles.nav_component}>
             <div className={styles.nav_items}>
@@ -20,15 +22,34 @@ export const Navbar = () => {
                             <a className={styles.nav_link} href=''>Policies</a>
                         </Link>
                         <a className={styles.nav_link} href=''>Our Team</a>
-                        <Link href="/Register" className={styles.User_Route}>
-                            <button className={styles.Signup_btn}>Sign Up</button>
-                        </Link>
-                        {/* <button className='logout-btn' onClick={() => logout()} >Log out</button> */}
+                        <>
+                            {
+                                user ? (
+                                    <Link href="/">
 
+                                        <button className={styles.Signup_btn}
+                                            onClick={() => {
+                                                logout();
+                                                console.log(isAuthenticated);
+                                            }}
+                                            disabled={isAuthenticating}
+                                        >
+                                            Logout{console.log(isAuthenticated)}
+                                        </button>
+                                    </Link>
+
+                                ) : (
+                                    <Link href="/Login" className={styles.User_Route}>
+                                        <button className={styles.Signup_btn}>Sign Up/login</button>
+                                    </Link>
+
+                                )
+                            }
+                        </>
                     </li>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

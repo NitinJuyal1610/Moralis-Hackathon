@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useMoralis } from "react-moralis";
 import "react-image-upload/dist/index.css";
 import Navbar from "./components/Navbar";
 import styles from "../styles/profile.module.css";
-import { FileUpload } from "./FileUpload";
-
+import { FileUpload } from "./components/FileUpload";
+import InsureContext from "./context/InsureContext";
 const Profile = () => {
   const { user } = useMoralis();
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -16,6 +16,7 @@ const Profile = () => {
   const enable = () => {
     setIsButtonDisabled(false);
   };
+
   const [formData, setFormData] = useState({
     fullName: "",
     username: "",

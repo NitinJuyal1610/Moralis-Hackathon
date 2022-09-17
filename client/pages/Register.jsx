@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
-
 import styles from "../styles/Register.module.css";
 const Register = () => {
   const { authenticate, isAuthenticated, signup } = useMoralis();

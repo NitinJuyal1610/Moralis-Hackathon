@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useMoralis } from "react-moralis";
-import ImageUploader from "react-image-upload";
 import "react-image-upload/dist/index.css";
 import Navbar from "./components/Navbar";
 import styles from "../styles/profile.module.css";
 import { FileUpload } from "./FileUpload";
 
 const Profile = () => {
-  const { logout, isAuthenticated, user, isAuthenticating } = useMoralis();
+  const { user } = useMoralis();
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-  const [selectedFile, setSelectedFile] = useState({});
-  const handleSubmission = async () => {
-    FileUpload(selectedFile, user, "ProfileImage");
+
+  const handleSubmission = async (img) => {
+    await FileUpload(img, user, "ProfileImage");
   };
-  const [src, setSrc] = useState({});
 
   const enable = () => {
     setIsButtonDisabled(false);
@@ -65,31 +63,26 @@ const Profile = () => {
         <div className={styles.left_side}>
           <div className={styles.left_box}>
             <div>
-              {typeof src === typeof {} ? (
-                <ImageUploader
-                  onFileAdded={(img) => setSelectedFile(img)}
-                  onFileRemoved={() => () => {
-                    setSrc({});
-                  }}
-                  style={{
-                    height: 200,
-                    width: 200,
-                    background: "rgb(255,255,255)",
-                  }}
-                  deleteIcon={
-                    <img
-                      src="https://img.icons8.com/color/48/000000/multiply.png"
-                      style={{ height: 20, width: 20 }}
-                      alt=""
-                      hidden={typeof src === typeof {}}
-                    />
-                  }
-                  uploadIcon={
-                    <img src="https://img.icons8.com/fluency/48/000000/add-image.png" />
-                  }
+              {user?.get("ProfileImage") ? (
+                <img
+                  className={styles.image}
+                  src={user.get("ProfileImage")[0]}
                 />
               ) : (
-                <img className={styles.image} src={src} />
+                //add image uploader
+                <div>
+                  <input
+                    onChange={(e) => {
+                      handleSubmission(e.target.files);
+                    }}
+                    type="file"
+                    id="files"
+                    hidden={true}
+                  />
+                  <label className={styles.upload} for="files">
+                    Select file
+                  </label>
+                </div>
               )}
             </div>
 

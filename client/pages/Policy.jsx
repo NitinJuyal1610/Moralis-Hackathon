@@ -4,8 +4,8 @@ import styles from "../styles/Policy.module.css"
 
 const Policy = () => {
     const [coin, setCoin] = useState();
-    const [years, setYears] = useState(0)
-    const [amount, setAmount] = useState(0)
+    const [years, setYears] = useState()
+    const [amount, setAmount] = useState()
 
 
     return (

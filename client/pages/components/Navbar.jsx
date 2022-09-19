@@ -1,7 +1,8 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styles from "../../styles/Navbar.module.css";
 import { useMoralis } from "react-moralis";
+
 export const Navbar = () => {
   const { user, isAuthenticated, isAuthenticating, logout } = useMoralis();
 

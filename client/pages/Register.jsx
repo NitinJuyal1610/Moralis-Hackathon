@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import styles from "../styles/Register.module.css";
+import { useRouter } from "next/router";
 const Register = () => {
   const { authenticate, isAuthenticated, signup } = useMoralis();
-
+  const router = useRouter();
   // const [userLogged,setUserLogged] =useState(false)
   const [formData, setFormData] = useState({
-    fullName: "",
     username: "",
     email: "",
     phoneNumber: "",
@@ -14,15 +14,8 @@ const Register = () => {
     password: "",
     ConPassword: "",
   });
-  const {
-    fullName,
-    username,
-    email,
-    phoneNumber,
-    gender,
-    password,
-    ConPassword,
-  } = formData;
+  const { username, email, phoneNumber, gender, password, ConPassword } =
+    formData;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -34,14 +27,29 @@ const Register = () => {
         password,
         email,
         { phoneNumber: phoneNumber },
-        { gender: gender },
-        { fullName: fullName }
+        { gender: gender }
       );
-      signup(username, password, email, {
-        phoneNumber: phoneNumber,
-        gender: gender,
-        fullName: fullName,
-      });
+      signup(
+        username,
+        password,
+        email,
+        {
+          phoneNumber: phoneNumber,
+          gender: gender,
+        },
+        {
+          onError: () => {
+            throw "Something Went Wrong";
+          },
+
+          onSuccess: () => {
+            console.log("done");
+            setTimeout(function () {
+              router.push("/Profile");
+            }, 500);
+          },
+        }
+      );
     }
   };
 
@@ -58,18 +66,6 @@ const Register = () => {
                 action="#"
               >
                 <div className={styles.user_details}>
-                  <div className={styles.input_box}>
-                    <span className={styles.details}>Full Name</span>
-                    <input
-                      className={styles.input}
-                      type="text"
-                      placeholder="Enter your name"
-                      name="fullName"
-                      value={fullName}
-                      onChange={(e) => onChange(e)}
-                      required
-                    />
-                  </div>
                   <div className={styles.input_box}>
                     <span className={styles.details}>Username</span>
                     <input

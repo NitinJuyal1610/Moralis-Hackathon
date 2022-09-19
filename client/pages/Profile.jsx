@@ -53,7 +53,7 @@ const Profile = () => {
     console.log(NomineeName, NomineeAddress);
     if (NomineeAddress.length) {
       if (user?.get("NomineeAddress")) {
-        user.set("NomineeAddress", NomineeAddress);
+        user.set("NomineeAddress", [NomineeAddress]);
       } else {
         user.addUnique("NomineeAddress", NomineeAddress);
       }
@@ -61,7 +61,7 @@ const Profile = () => {
 
     if (NomineeName.length) {
       if (user?.get("NomineeName")) {
-        user.set("NomineeName", NomineeName);
+        user.set("NomineeName", [NomineeName]);
       } else {
         user.addUnique("NomineeName", NomineeName);
       }
@@ -78,10 +78,7 @@ const Profile = () => {
           <div className={styles.left_box}>
             <div>
               {user?.get("ProfileImage") ? (
-                <img
-                  className={styles.image}
-                  src={user.get("ProfileImage")[0]}
-                />
+                <img className={styles.image} src={user.get("ProfileImage")} />
               ) : (
                 //add image uploader
                 <div>
@@ -176,7 +173,7 @@ const Profile = () => {
                 <input
                   className={styles.input}
                   type="text"
-                  placeholder={user?.get("NomineeName")}
+                  placeholder={user?.get("NomineeName") && [0]}
                   name="NomineeName"
                   value={NomineeName}
                   onChange={(e) => onChange(e)}
@@ -191,7 +188,7 @@ const Profile = () => {
                   type="text"
                   name="NomineeAddress"
                   value={NomineeAddress}
-                  placeholder={user?.get("NomineeAddress")}
+                  placeholder={user?.get("NomineeAddress") && [0]}
                   onChange={(e) => onChange(e)}
                   disabled={isButtonDisabled}
                 />

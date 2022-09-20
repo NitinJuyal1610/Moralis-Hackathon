@@ -5,6 +5,27 @@ import { useMoralis } from "react-moralis";
 
 export const Navbar = () => {
   const { user, isAuthenticated, isAuthenticating, logout } = useMoralis();
+  var policy = true
+  // const [matches, setMatches] = useState(
+  //   window.matchMedia("(min-width: 480px)").matches
+  // )
+  // useEffect(() => {
+  //   window
+  //     .matchMedia("(min-width: 480px)")
+  //     .addEventListener('change', e => setMatches(e.matches));
+  // }, []);
+  // // window.addEventListener('load', () => {
+  // window.onload = function () {
+  //   const togglebtn = document.querySelector(".nav_toggle")
+  //   console.log(togglebtn)
+  //   togglebtn.addEventListener('click', togglefunction)
+  // }
+  // function togglefunction() {
+  //   var nav = document.querySelector(".nav_item")
+  //   nav.classList.add("active")
+  // }
+
+  // })
 
   return (
     <div className={styles.nav_component}>
@@ -29,21 +50,30 @@ export const Navbar = () => {
             </a>
             <>
               {user ? (
-                <Link href="/">
-                  <button
-                    className={styles.Signup_btn}
-                    onClick={() => {
-                      logout();
-                    }}
-                    disabled={isAuthenticating}
-                  >
-                    Logout
-                  </button>
-                </Link>
+                <>
+                  <Link href="/">
+                    <button
+                      className={styles.Signup_btn}
+                      onClick={() => {
+                        logout();
+                      }}
+                      disabled={isAuthenticating}
+                    >
+                      Logout
+                    </button>
+                  </Link>
+                  {policy && <Link href="/DashBoard" className={styles.User_Route}>
+                    <button className={styles.Signup_btn}>Dashboard</button>
+                  </Link>
+                  }
+                </>
+
               ) : (
                 <Link href="/Login" className={styles.User_Route}>
                   <button className={styles.Signup_btn}>Sign Up/login</button>
                 </Link>
+
+
               )}
             </>
           </li>

@@ -1,148 +1,92 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
+
 import Navbar from "./components/Navbar";
 import styles from "../styles/Policy.module.css";
-import { Web3Context } from "./context/InsureContext";
-import { useMoralis } from "react-moralis";
-import InsuranceInfo from "./InsuranceInfo";
+import Disc from "./components/Disc";
+import Calculator from "./components/Calculator";
+
 const Policy = () => {
-  const [coin, setCoin] = useState(1);
+  const [coin, setCoin] = useState();
   const [years, setYears] = useState();
   const [amount, setAmount] = useState();
-  const [age, setAge] = useState();
-  const [premium, setPremium] = useState();
-  const [insured, setInsured] = useState(false);
-  const { checkPremium, buyInsurance, getInfo, payPrem } =
-    useContext(Web3Context);
-  const { user, enableWeb3, isWeb3Enabled } = useMoralis();
-  const findPremium = async (e) => {
-    e.preventDefault();
-    const data = await checkPremium(age, amount, years);
-    setPremium(parseInt(data._hex, 16));
-  };
+  // const [isSmallScreen, setIsSmallScreen] = useState("100%");
 
-  const BuyInsurance = async (e) => {
-    e.preventDefault();
-    const nominee = (user?.get("NomineeAddress"))[0];
-    try {
-      // await addCoin(coinAddress, priceFeed, 1);
-      // const data = await getInfo();
-      // console.log(data);
-     // await buyInsurance(coin, nominee, age, amount, years);
-       await payPrem(1);
-      // const data2 = await getInfo();
-      console.log(data2);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    if (!isWeb3Enabled) {
-      enableWeb3();
-    }
-  }, []);
-
+  // useEffect(() => {
+  //     setIsSmallScreen(!window.matchMedia("(max-width: 700px)").matches ? "200px" : "100%");
+  // }, []);
   return (
     <>
       <Navbar />
-      {!insured ? (
-        <section className={styles.container}>
-          <div className={styles.section}>
-            <form className={styles.form}>
-              <div className={styles.div}>
-                <span className={styles.span}>
-                  Enter Amount of Insurance in American $ :
-                </span>
-                <input
-                  className={styles.input}
-                  type="text"
-                  id="currency-field"
-                  placeholder="$500,000.00"
-                  name="Amount"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  required
-                />
+      <section className={styles.container}>
+        <div className={styles.section}>
+          <div className={styles.left_section}>
+            <div className={styles.left_box}>
+              <h4 className={styles.tagline}>
+                World First <b className={styles.bold_text}>decentralized</b>{" "}
+                Insurance
+              </h4>
+              <h2 className={styles.disc}>
+                Stay Supremely Protected with{" "}
+                <b className={styles.bold_text}>Smart Contract </b> based
+                Insurance
+              </h2>
+              <div className={styles.plus_section}>
+                <div className={styles.x_box}>
+                  <div className={styles.img_back}>
+                    <img
+                      className={styles.pros_img}
+                      src="../static/highlights_rider_benefits.svg"
+                    />
+                  </div>
+                  <p className={styles.prosDisc}>
+                    Customize policy with your needs
+                  </p>
+                </div>
+                <div className={styles.x_box}>
+                  <div className={styles.img_back}>
+                    <img
+                      className={styles.pros_img}
+                      src="../static/lifecoverage_icon_compressed.svg"
+                    />
+                  </div>
+                  <p className={styles.prosDisc}>
+                    easy to buy, fast claim delivery with Smart Contract based
+                    claim process
+                  </p>
+                </div>
+                <div className={styles.x_box}>
+                  <div className={styles.img_back}>
+                    <img
+                      className={styles.pros_img}
+                      src="../static/pptcomponent_premiumpaymentterm_compressed.svg"
+                    />
+                  </div>
+                  <p className={styles.prosDisc}>
+                    Save your money with Tax free Insurance
+                  </p>
+                </div>
+                <div className={styles.x_box}>
+                  <div className={styles.img_back}>
+                    <img
+                      className={styles.pros_img}
+                      src="../static/premium-payment.svg"
+                    />
+                  </div>
+                  <p className={styles.prosDisc}>
+                    Ease of payment with CryptoCurrency
+                  </p>
+                </div>
               </div>
-              <div className={styles.div}>
-                <span className={styles.span}>Enter Time Period in Years:</span>
-                <input
-                  className={styles.input}
-                  type="year"
-                  placeholder=""
-                  name="years"
-                  value={years}
-                  onChange={(e) => setYears(e.target.value)}
-                  required
-                />
-              </div>
-
-              <div className={styles.div}>
-                <span className={styles.span}>Enter Your Age:</span>
-                <input
-                  className={styles.input}
-                  type="age"
-                  name="age"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
-                  required
-                />
-              </div>
-              <div className={styles.divSelect}>
-                <label for="payment" className={styles.label}>
-                  Choose a Coin:
-                </label>
-                <select
-                  id="coins"
-                  name="coins"
-                  value={coin}
-                  className={styles.select}
-                  defaultValue={1}
-                  required
-                  onChange={(e) => setCoin(e.target.value)}
-                >
-                  <option className={styles.option} value={1}>
-                    USDC
-                  </option>
-                  <option className={styles.option} value={2}>
-                    BTC
-                  </option>
-                  <option className={styles.option} value={3}>
-                    ETH
-                  </option>
-                </select>
-              </div>
-              <button
-                className={styles.Btn}
-                onClick={(e) => {
-                  findPremium(e);
-                }}
-              >
-                Check Amount
-              </button>
-            </form>
-            <div className={styles.Output}>
-              <div className={styles.display_amount}>
-                Final Amount:{premium}$
-              </div>
-            </div>
-
-            <div>
-              <button
-                className={styles.Btn}
-                onClick={(e) => {
-                  BuyInsurance(e);
-                }}
-                hidden={!premium}
-              >
-                Buy Insurance
-              </button>
             </div>
           </div>
-        </section>
-      ) : (
-        <InsuranceInfo />
-      )}
+          <Calculator />
+        </div>
+      </section>
+      <container className={styles.container}>
+        <div className={styles.info_box}>
+          <Disc />
+        </div>
+      </container>
     </>
   );
 };

@@ -10,8 +10,8 @@
 .nav_items {
   flex: 1;
   padding-left: 15vw;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  /* padding-top: 10px; */
+  /* padding-bottom: 10px; */
   padding-right: 15vw;
   display: flex;
   justify-content: space-between;
@@ -54,9 +54,10 @@
   text-decoration: none;
   border: 2px dashed transparent;
 }
-.nav_link:hover {
+/* .nav_link:hover {
   border: 2px dashed white;
-}
+} */
+.nav_link:hover,
 .Signup_btn:hover {
   background: rgb(2, 0, 36);
 
@@ -69,13 +70,13 @@
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
-.nav_link {
+/* .nav_link {
   margin: 5px;
   font-family: "Raleway", sans-serif;
   font-weight: 500;
   color: white;
   letter-spacing: 0.5px;
-}
+} */
 .Details {
   margin-right: 30px;
 }
@@ -93,6 +94,7 @@
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
+.nav_link,
 .Signup_btn {
   display: block;
   padding: 5px;
@@ -119,7 +121,7 @@
   letter-spacing: 0.5px;
   cursor: pointer;
 }
-.isActive {
+.active {
   display: none;
 }
 .noActive {
@@ -128,4 +130,17 @@
 .Policy_Route {
   margin-top: 13px;
   text-decoration: none;
+}
+/* @media screen and (min-width: 480px) {
+  .nav_component {
+    width: 190vw !important;
+  }
+} */
+@media screen and (max-width: 480px) {
+  .nav_component {
+    width: 131%;
+  }
+  .nav_item {
+    /* display: none; */
+  }
 }

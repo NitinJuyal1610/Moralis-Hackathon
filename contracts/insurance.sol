@@ -10,7 +10,6 @@ pragma solidity ^0.8.8;
 import "./chainlinkAggregator.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "hardhat/console.sol";
@@ -45,8 +44,8 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         uint256 nextPremiumTimeStamp;
         uint256 insuredAmount;
         uint256 premium;
-        uint256 paymentCoinId;
         uint256 premiumPaid;
+        uint256 paymentCoinId;
         bool isInsured;
         bool isMatured;
         bool isTerminated;
@@ -179,6 +178,7 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
 
         address priceFeed = ListOfpaymentCoins[_paymentCoinID].priceFeed;
         uint256 amount = amountOfCoinsToSend(priceFeed, premium);
+
         ListOfInsuranceHolders[msgSender] = InsuranceHolder(
             msgSender, // on hold
             _nominee,
@@ -187,17 +187,17 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
             block.timestamp + 31 days,
             _insuredAmount,
             premium,
+            premium,
             _paymentCoinID,
-            0,
             true,
             false,
             false
         );
-
+       console.log("amount",amount);
         IERC20Upgradeable(paymentCoinAddress).safeTransferFrom(
             msgSender, // on hold
             address(this),
-            amount
+            (amount)
         );
         emit insuranceBought(msgSender, _paymentCoinID, _insuredAmount);
     }
@@ -236,15 +236,20 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         returns (uint256)
     {
         uint256 priceOfpaymentCoin = uint256(
-            aggregator.getLatestPrice(priceFeed)
+            aggregator.getLatestPrice(priceFeed) * 1000
         );
+        console.log(priceOfpaymentCoin, "priceOfpaymentCoin");
         uint256 decimalsDenominator = uint256(
             10**aggregator.decimals(priceFeed)
         );
         uint256 usdValueOfPaymentCoins = priceOfpaymentCoin /
             decimalsDenominator;
+        console.log(_premium, "premium");
+        console.log(usdValueOfPaymentCoins, "usdValueOfPaymentCoins");
 
-        uint256 amount = _premium / usdValueOfPaymentCoins;
+        uint256 amount = _premium *1000 / usdValueOfPaymentCoins;
+        console.log(amount,"amount");
+
         return amount;
     }
 
@@ -311,15 +316,17 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         ListOfInsuranceHolders[msgSender]
             .lastPremiumPaidTimeStamp = currentTimeStamp;
 
-        uint256 premiumPaid=ListOfInsuranceHolders[msgSender]
-            .premiumPaid ;
-        premiumPaid+=premium;
-            
-        ListOfInsuranceHolders[msgSender].nextPremiumTimeStamp =
-            currentTimeStamp +
-            31 days;
+        uint256 paidPremium=ListOfInsuranceHolders[msgSender]
+            .premiumPaid;
+        paidPremium= paidPremium+premium;
         ListOfInsuranceHolders[msgSender]
-            .premiumPaid =premiumPaid;
+            .premiumPaid=paidPremium;
+
+        ListOfInsuranceHolders[msgSender].nextPremiumTimeStamp += 31 days;
+    }
+
+    function getInsuranceInfo()public view returns (InsuranceHolder memory){
+        return ListOfInsuranceHolders[msg.sender];
     }
 
     function claimInsurance(address owner, uint256 _paymentCoinID)
@@ -343,11 +350,6 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
             insuredAmount
         );
         ListOfInsuranceHolders[owner].isInsured = false;
-        ListOfInsuranceHolders[owner].premiumPaid = 0;
         ListOfInsuranceHolders[owner].insuredAmount = 0;
     }
-
-    function terminateInsurance(address owner) external onlyOwner {}
-
-    function matureInsurance() external {}
 }

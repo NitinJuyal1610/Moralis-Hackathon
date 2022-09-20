@@ -168,12 +168,12 @@
         },
         {
           "internalType": "uint256",
-          "name": "paymentCoinId",
+          "name": "premiumPaid",
           "type": "uint256"
         },
         {
           "internalType": "uint256",
-          "name": "premiumPaid",
+          "name": "paymentCoinId",
           "type": "uint256"
         },
         {
@@ -333,6 +333,81 @@
       "type": "function"
     },
     {
+      "inputs": [],
+      "name": "getInsuranceInfo",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "nominee",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "insuranceStartTimeStamp",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "lastPremiumPaidTimeStamp",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "nextPremiumTimeStamp",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "insuredAmount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "premium",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "premiumPaid",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "paymentCoinId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isInsured",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isMatured",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isTerminated",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct insurance.InsuranceHolder",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
           "internalType": "address",
@@ -362,13 +437,6 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "matureInsurance",
-      "outputs": [],
-      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
@@ -431,19 +499,6 @@
     {
       "inputs": [],
       "name": "renounceOwnership",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "owner",
-          "type": "address"
-        }
-      ],
-      "name": "terminateInsurance",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"

@@ -39,12 +39,9 @@ const InsureContext = ({ children }) => {
         nominee,
         age,
         insuredAmount,
-        timePeriod,
-        {
-          gasLimit: 5000000,
-        }
+        timePeriod
       );
-      console.log(contract);
+
       console.log(tx);
       const provider = new ethers.providers.Web3Provider(ethereum);
       await provider.waitForTransaction(tx.hash);
@@ -54,21 +51,35 @@ const InsureContext = ({ children }) => {
       console.log(e);
     }
   };
+
+  const payPrem = async (paymentCoinID) => {
+    console.log(paymentCoinID);
+    try {
+      const tx = await contract.payPremium(paymentCoinID);
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      await provider.waitForTransaction(tx.hash);
+      const receipt = await provider.getTransactionReceipt(tx.hash);
+      // console.log(receipt);
+      console.log("Payed", receipt);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   const checkPremium = async (age, amount, years) => {
+    console.log(contract);
     console.log(age, amount, years);
 
     const premium = await contract.calculatePremium(age, years, amount);
     return premium;
   };
 
-  const addCoin = async (coinAddress, priceFeed, id) => {
-    console.log(coinAddress, priceFeed, id);
-
-    await contract.addNewpaymentCoin(coinAddress, priceFeed, id);
+  const getInfo = async () => {
+    const data = await contract.getInsuranceInfo();
+    return data;
   };
   return (
     <Web3Context.Provider
-      value={{ demo: "demo", checkPremium, buyInsurance, addCoin }}
+      value={{ checkPremium, buyInsurance, getInfo, payPrem }}
     >
       {children}
     </Web3Context.Provider>

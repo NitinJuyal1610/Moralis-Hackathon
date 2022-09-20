@@ -11,7 +11,8 @@ const Policy = () => {
   const [age, setAge] = useState();
   const [premium, setPremium] = useState();
   const [insured, setInsured] = useState(false);
-  const { checkPremium, buyInsurance, addCoin } = useContext(Web3Context);
+  const { checkPremium, buyInsurance, getInfo, payPrem } =
+    useContext(Web3Context);
   const { user, enableWeb3, isWeb3Enabled } = useMoralis();
   const findPremium = async (e) => {
     e.preventDefault();
@@ -22,15 +23,14 @@ const Policy = () => {
   const BuyInsurance = async (e) => {
     e.preventDefault();
     const nominee = (user?.get("NomineeAddress"))[0];
-
-    //for usdc
-    const coinAddress = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48";
-    const priceFeed = "0xfE4A8cc5b5B2366C1B58Bea3858e81843581b2F7";
     try {
       // await addCoin(coinAddress, priceFeed, 1);
-
-      await buyInsurance(coin, nominee, age, amount, years);
-      console.log("successFully Buyed Insurance");
+      // const data = await getInfo();
+      // console.log(data);
+     // await buyInsurance(coin, nominee, age, amount, years);
+       await payPrem(1);
+      // const data2 = await getInfo();
+      console.log(data2);
     } catch (error) {
       console.log(error);
     }

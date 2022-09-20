@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+.h2 {
+  margin-left: 10px;
+  text-transform: uppercase;
+}
+.panel_component {
+  background-color: #e9f4ff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 15px;
+  padding-bottom: 30px;
+}
+.panel_box {
+  margin-left: 15vw;
+  padding-left: 60px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.span {
+  background-color: white;
+  display: flex;
+  border: solid 1px #e2b1ff;
+  border-radius: 10px;
+  margin: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.key {
+  margin-right: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  margin: 10px 0px 5px 5px;
+  font-size: 1rem;
+}
+.values {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 10px 10px 5px 5px;
+}
+.btn {
+  margin-left: 5px;
+  margin-top: 10px;
+
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: #171436;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: 0.1s linear;
+}
+.btn:hover {
+  border: 1px solid #e2b1ff;
+  background-color: #e9f4ff;
+  color: #171436;
+}
+.btn:nth-child(2) {
+  width: 160px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  /* background-color: #171436; */
+  color: black;
+  margin-left: 30px;
+  font-size: 1.5rem;
+  transition: 1s linear;
+  margin-right: 30px;
+  padding-right: 10px;
+}
+.label {
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.input {
+  border: 1px solid #e2b1ff;
+  padding: 10px;
+  font-size: 1.5rem;
+  outline: none;
+  border-radius: 5px;
+  background-color: transparent;
+}
+.submit_btn {
+  margin-top: 30px;
+  padding: 10px;
+  background-color: transparent;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: capitalize;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: 0.1s;
+  border: 3px solid #e2b1ff;
+}
+.flex_right {
+  margin-left: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submit_btn:hover {
+  background-color: #171436;
+  border: 3px solid #171436;
+  color: white;
+}
+.section_flex {
+  display: flex;
+  margin-top: 15px;
+  padding-bottom: 30px;
+}
+.Calculator_box {
+  margin-left: 5vw;
+}
+.disc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.body {
+  background-color: #e9f4ff;
+  width: 100%;
+  height: 100vh;
+}

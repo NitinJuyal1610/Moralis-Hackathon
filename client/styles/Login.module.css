@@ -110,10 +110,12 @@
 }
 
 .body {
+  margin-top: 15px;
   height: 100vh;
   display: flex;
   display: flex;
   justify-content: center;
   padding: 10px;
+  background-color: #e9f4ff;
   align-items: center;
 }

@@ -44,6 +44,7 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         uint256 nextPremiumTimeStamp;
         uint256 timePeriod;
         uint256 insuredAmount;
+        uint256 timePeriod;
         uint256 premium;
         uint256 premiumPaid;
         uint256 paymentCoinId;
@@ -144,6 +145,13 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         return block.timestamp - insuranceStartTimeStamp;
     }
 
+    /// @notice lets users buy insurance
+    /// @dev msg.sender is stored in local variable to save gas.
+    /// @param _paymentCoinId  id of the paymentCoin which can be used to access the paymentCoin properties
+    /// @param _nominee address of nominee who can claim insrance
+    /// @param _age  current age of insured user
+    /// @param _insuredAmount amount of money in us dollars for which the user is insured
+    /// @param  _timePeriod amount of time user is insured in years
     function buyInsurance(
         uint256 _paymentCoinID,
         address _nominee,
@@ -177,7 +185,7 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         );
 
         address priceFeed = ListOfpaymentCoins[_paymentCoinID].priceFeed;
-        uint256 amount = amountOfCoinsToSend(priceFeed, premium)*10**18;
+        uint256 amount = amountOfCoinsToSend(priceFeed, premium) * 10**18;
 
         ListOfInsuranceHolders[msgSender] = InsuranceHolder(
             msgSender, // on hold
@@ -193,7 +201,7 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
             true,
             false
         );
-       
+
         IERC20Upgradeable(paymentCoinAddress).safeTransferFrom(
             msgSender, // on hold
             address(this),
@@ -225,11 +233,11 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         return premium;
     }
 
-    /// @notice function calculates the perks in terms of percentage based on USD valo of tokens
-    /// @dev chainlink price agregator was used to get USD value of paymentCoins
+    /// @notice function calculates the amountOfCoinsToSend based on USD value of tokens
+    /// @dev 1000 multiplied to priceOfPaymentCoin get precision upto 3 decimal points
     /// @param priceFeed chainlink pricefeed of paymentCoin/USD pair
-    /// @param _premium the amount of paymentCoin user wishes to unstake
-    /// @return "perks" returns the perks in terms of percentage
+    /// @param _premium the amount of premium user has to pay.
+    /// @return "uint256" returns the amount of tokens to send
     function amountOfCoinsToSend(address priceFeed, uint256 _premium)
         internal
         view
@@ -247,12 +255,15 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         console.log(_premium, "premium");
         console.log(usdValueOfPaymentCoins, "usdValueOfPaymentCoins");
 
-        uint256 amount = _premium *1000 / usdValueOfPaymentCoins;
-        console.log(amount,"amount");
+        uint256 amount = (_premium * 1000) / usdValueOfPaymentCoins;
+        console.log(amount, "amount");
 
         return amount;
     }
 
+    /// @notice function to update nominee
+    /// @dev updates ListOfInsuranceHolders mapping
+    /// @param _newNominee address of new nominee
     function updateNominee(address _newNominee) external {
         address msgSender = msg.sender;
         InsuranceHolder storage insuranceHolder = ListOfInsuranceHolders[
@@ -273,6 +284,9 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         emit nomineeUpdated(msgSender, _newNominee);
     }
 
+    /// @notice users can pay premium, once theymiss last premium date they cannot par premium again
+    /// @dev 
+    /// @param _paymentCoinId  id of the paymentCoin which can be used to access the paymentCoin properties
     function payPremium(uint256 _paymentCoinID) external {
         address paymentCoinAddress = ListOfpaymentCoins[_paymentCoinID]
             .paymentCoinAddress;
@@ -304,7 +318,7 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         );
 
         address priceFeed = ListOfpaymentCoins[_paymentCoinID].priceFeed;
-        uint256 amount = amountOfCoinsToSend(priceFeed, premium)*10**18;
+        uint256 amount = amountOfCoinsToSend(priceFeed, premium) * 10**18;
         uint256 currentTimeStamp = block.timestamp;
 
         IERC20Upgradeable(paymentCoinAddress).safeTransferFrom(
@@ -316,19 +330,21 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         ListOfInsuranceHolders[msgSender]
             .lastPremiumPaidTimeStamp = currentTimeStamp;
 
-        uint256 paidPremium=ListOfInsuranceHolders[msgSender]
-            .premiumPaid;
-        paidPremium= paidPremium+premium;
-        ListOfInsuranceHolders[msgSender]
-            .premiumPaid=paidPremium;
+        uint256 paidPremium = ListOfInsuranceHolders[msgSender].premiumPaid;
+        paidPremium = paidPremium + premium;
+        ListOfInsuranceHolders[msgSender].premiumPaid = paidPremium;
 
         ListOfInsuranceHolders[msgSender].nextPremiumTimeStamp += 31 days;
     }
 
-    function getInsuranceInfo()public view returns (InsuranceHolder memory){
+    function getInsuranceInfo() public view returns (InsuranceHolder memory) {
         return ListOfInsuranceHolders[msg.sender];
     }
 
+    /// @notice claim can only be passed by the owner of the contract 
+    /// @dev setting insured amount after claim to 0 is not mandatory & is done for safety reasons
+    /// @param owner address of insured owner
+    /// @param _paymentCoinId  id of the paymentCoin which can be used to access the paymentCoin properties
     function claimInsurance(address owner, uint256 _paymentCoinID)
         external
         onlyOwner

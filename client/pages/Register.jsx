@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import styles from "../styles/Register.module.css";
 import { useRouter } from "next/router";
+import Navbar from "./components/Navbar";
 const Register = () => {
   const { authenticate, isAuthenticated, signup } = useMoralis();
   const router = useRouter();
@@ -57,6 +58,7 @@ const Register = () => {
 
   return (
     <>
+      <Navbar />
       {isAuthenticated ? (
         <div className={styles.body}>
           <div className={styles.container}>

@@ -167,41 +167,43 @@ const Profile = () => {
             onSubmit={(e) => NomineeInfo(e)}
             action="#"
           >
-            <div className={styles.user_details}>
-              <div className={styles.input_box}>
-                <span className={styles.details}>Nominee</span>
-                <input
-                  className={styles.input}
-                  type="text"
-                  placeholder={user?.get("NomineeName") && [0]}
-                  name="NomineeName"
-                  value={NomineeName}
-                  onChange={(e) => onChange(e)}
-                  disabled={isButtonDisabled}
-                />
+            <div className={styles.Nominee_form}>
+              <h1>Add Nominee</h1>
+              <div className={styles.user_details}>
+                <div className={styles.input_box}>
+                  <span className={styles.details}>Nominee</span>
+                  <input
+                    className={styles.input}
+                    type="text"
+                    placeholder={user?.get("NomineeName") && [0]}
+                    name="NomineeName"
+                    value={NomineeName}
+                    onChange={(e) => onChange(e)}
+                    disabled={isButtonDisabled}
+                  />
+                </div>
+
+                <div className={styles.input_box}>
+                  <span className={styles.details}>Nominee Wallet Address</span>
+                  <input
+                    className={styles.input}
+                    type="text"
+                    name="NomineeAddress"
+                    value={NomineeAddress}
+                    placeholder={user?.get("NomineeAddress") && [0]}
+                    onChange={(e) => onChange(e)}
+                    disabled={isButtonDisabled}
+                  />
+                </div>
               </div>
 
-              <div className={styles.input_box}>
-                <span className={styles.details}>Nominee Wallet Address</span>
-                <input
-                  className={styles.input}
-                  type="text"
-                  name="NomineeAddress"
-                  value={NomineeAddress}
-                  placeholder={user?.get("NomineeAddress") && [0]}
-                  onChange={(e) => onChange(e)}
-                  disabled={isButtonDisabled}
-                />
+              <div className={styles.button}>
+                <input type="submit" value="Add Nominee" />
               </div>
-            </div>
-
-            <div className={styles.button}>
-              <input type="submit" value="Add Nominee" />
             </div>
           </form>
         </div>
       </div>
-      <div></div>
     </div>
   );
 };

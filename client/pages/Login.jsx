@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useMoralis } from "react-moralis";
@@ -9,12 +9,14 @@ import Navbar from "./components/Navbar";
 const Login = () => {
   const router = useRouter();
 
-  const { login, isAuthenticated, authenticate } = useMoralis();
+  const { login, isAuthenticated, authenticate, isWeb3Enabled, enableWeb3 } = useMoralis();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   // const { user, } = useMoralis()
-
+  useEffect(() => {
+    if (!isWeb3Enabled) enableWeb3();
+  }, [])
   return (
     <>
       <Navbar />

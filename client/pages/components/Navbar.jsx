@@ -6,27 +6,7 @@ import { useMoralis } from "react-moralis";
 export const Navbar = () => {
   const { user, isAuthenticated, isAuthenticating, logout } = useMoralis();
   var policy = true
-  // const [matches, setMatches] = useState(
-  //   window.matchMedia("(min-width: 480px)").matches
-  // )
-  // useEffect(() => {
-  //   window
-  //     .matchMedia("(min-width: 480px)")
-  //     .addEventListener('change', e => setMatches(e.matches));
-  // }, []);
-  // // window.addEventListener('load', () => {
-  // window.onload = function () {
-  //   const togglebtn = document.querySelector(".nav_toggle")
-  //   console.log(togglebtn)
-  //   togglebtn.addEventListener('click', togglefunction)
-  // }
-  // function togglefunction() {
-  //   var nav = document.querySelector(".nav_item")
-  //   nav.classList.add("active")
-  // }
-
-  // })
-
+  
   return (
     <div className={styles.nav_component}>
       <div className={styles.nav_items}>

@@ -4,6 +4,7 @@ import "react-image-upload/dist/index.css";
 import Navbar from "./components/Navbar";
 import styles from "../styles/profile.module.css";
 import { FileUpload } from "./components/FileUpload";
+import { useRouter } from "next/router";
 
 const Profile = () => {
   const { user } = useMoralis();
@@ -17,6 +18,8 @@ const Profile = () => {
   const enable = () => {
     setIsButtonDisabled(false);
   };
+
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     username: "",
@@ -69,6 +72,8 @@ const Profile = () => {
     }
 
     user.save();
+
+    router.push("/Policy");
   };
 
   return (

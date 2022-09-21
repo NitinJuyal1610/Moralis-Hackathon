@@ -11,7 +11,7 @@ const DashBoard = () => {
   const [popUp, setPopUp] = useState(false);
   const [data, setData] = useState(null);
   const [userNum, setUserNum] = useState(null);
-  const { user, isWeb3Enabled, enableWeb3 } = useMoralis();
+  const { user, isWeb3Enabled, enableWeb3, account } = useMoralis();
   const handleToggle = () => {
     setPopUp(!popUp);
   };
@@ -72,7 +72,13 @@ const DashBoard = () => {
                 <h3 className={styles.values}>{user?.get("NomineeName")}</h3>
               </span>
               <span className={styles.span}>
-                <h3 className={styles.key}>Address of Policy holder :</h3>
+                <h3 className={styles.key}>Address of Policy Holder :</h3>
+                <h3 className={styles.values}>
+                  {`${account}`.substring(0, 15)}....
+                </h3>
+              </span>
+              <span className={styles.span}>
+                <h3 className={styles.key}>Address of Nominee :</h3>
                 <h3 className={styles.values}>
                   {`${user?.get("NomineeAddress")}`.substring(0, 15)}....
                 </h3>

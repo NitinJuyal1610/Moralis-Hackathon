@@ -346,7 +346,6 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
     /// @param _paymentCoinID id of the paymentCoin which can be used to access the paymentCoin properties
     function claimInsurance(address owner, uint256 _paymentCoinID)
         external
-        onlyOwner
     {
         InsuranceHolder storage insuranceHolder = ListOfInsuranceHolders[owner];
         address paymentCoinAddress = ListOfpaymentCoins[_paymentCoinID]

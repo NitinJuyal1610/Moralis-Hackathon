@@ -50,7 +50,7 @@ const Calculator = () => {
   return (
     <>
       <form className={styles.form}>
-        <h1 className={styles.form_heading}>Term Insurance Calculator</h1>
+        <h1 className={styles.form_heading}>Customize Your Term Insurance </h1>
         <div className={styles.div}>
           <span className={styles.span}>
             Enter Amount of Insurance in American $ :
@@ -97,7 +97,7 @@ const Calculator = () => {
             checkPrem(e);
           }}
         >
-          Check policy
+          Create policy
         </button>
         <a
           className={styles.Btn2}

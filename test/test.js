@@ -38,9 +38,9 @@ describe(" insurance", () => {
 
     // gib insuranceV1 contract allowance for Dai tokens.
 
-    await dai.increaseAllowance(
+    await dai.approve(
       insurance.address,
-      ethers.utils.parseUnits("10000000000000000000")
+      ethers.utils.parseUnits("100000000000000000000000000000")
     );
 
     console.log("increased allowance");
@@ -49,7 +49,7 @@ describe(" insurance", () => {
     await insurance.addNewpaymentCoin(DAIPerUSD, daiPricefeed, 1);
   });
 
-  it("should be able to buy insurance", async function (done) {
+  it("should be able to buy insurance", async function () {
     const nominee = addr1.address;
     const age = 30;
     const insuredAmount = 1000;
@@ -61,10 +61,15 @@ describe(" insurance", () => {
       gasLimit: 500000,
     });
 
-    console.log("buyed insurance");
+    await dai.mint(
+      insurance.address,
+      ethers.utils.parseUnits("100000000000000000000000")
+    );
+    console.log("buyed insurance and minted");
 
-    await insurance.claimInsurance(owner.address, 1);
+    await insurance.claimInsurance(owner.address, 1, {
+      gasLimit: 500000,
+    });
     console.log("claim successfull");
-    done();
   });
 });

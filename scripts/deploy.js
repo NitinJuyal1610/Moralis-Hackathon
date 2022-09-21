@@ -26,10 +26,20 @@ async function main() {
   const contractAddr = "0x98cC656e2dEb3706FCd073C236b12e7e919FecCF";
   StableCoin = await ethers.getContractFactory("InsureChain");
   stablecoin = await StableCoin.attach(contractAddr);
+  await stablecoin.approve(
+    insurance.address,
+    ethers.utils.parseUnits("1000000000000000000000000000")
+  );
+
   await stablecoin.increaseAllowance(
     insurance.address,
-    ethers.utils.parseUnits("100000000000000000000000")
+    ethers.utils.parseUnits("1000000000000000000000000000")
   );
+  await stablecoin.mint(
+    insurance.address,
+    ethers.utils.parseUnits("1000000000000000000000000000")
+  );
+
   console.log("allowance granted");
 }
 main()

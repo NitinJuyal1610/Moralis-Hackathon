@@ -26,5 +26,7 @@ module.exports = {
       polygonMumbai: process.env.NEXT_PUBLIC_API_KEY,
     },
   },
- 
+  mocha: {
+    timeout: 100000000,
+  },
 };

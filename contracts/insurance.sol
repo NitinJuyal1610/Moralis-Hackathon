@@ -44,7 +44,6 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         uint256 nextPremiumTimeStamp;
         uint256 timePeriod;
         uint256 insuredAmount;
-        uint256 timePeriod;
         uint256 premium;
         uint256 premiumPaid;
         uint256 paymentCoinId;
@@ -147,7 +146,7 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
 
     /// @notice lets users buy insurance
     /// @dev msg.sender is stored in local variable to save gas.
-    /// @param _paymentCoinId  id of the paymentCoin which can be used to access the paymentCoin properties
+    /// @param _paymentCoinID  id of the paymentCoin which can be used to access the paymentCoin properties
     /// @param _nominee address of nominee who can claim insrance
     /// @param _age  current age of insured user
     /// @param _insuredAmount amount of money in us dollars for which the user is insured
@@ -286,7 +285,7 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
 
     /// @notice users can pay premium, once theymiss last premium date they cannot par premium again
     /// @dev 
-    /// @param _paymentCoinId  id of the paymentCoin which can be used to access the paymentCoin properties
+    /// @param _paymentCoinID  id of the paymentCoin which can be used to access the paymentCoin properties
     function payPremium(uint256 _paymentCoinID) external {
         address paymentCoinAddress = ListOfpaymentCoins[_paymentCoinID]
             .paymentCoinAddress;
@@ -344,7 +343,7 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
     /// @notice claim can only be passed by the owner of the contract 
     /// @dev setting insured amount after claim to 0 is not mandatory & is done for safety reasons
     /// @param owner address of insured owner
-    /// @param _paymentCoinId  id of the paymentCoin which can be used to access the paymentCoin properties
+    /// @param _paymentCoinID id of the paymentCoin which can be used to access the paymentCoin properties
     function claimInsurance(address owner, uint256 _paymentCoinID)
         external
         onlyOwner
@@ -359,8 +358,8 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         );
         address nominee = insuranceHolder.nominee;
         uint256 insuredAmount = insuranceHolder.insuredAmount*10**18;
-
-        IERC20Upgradeable(paymentCoinAddress).safeTransferFrom(
+        IERC20Upgradeable(paymentCoinAddress).approve(address(this),insuredAmount);
+        IERC20Upgradeable(paymentCoinAddress).transferFrom(
             address(this), // on hold
             nominee,
             insuredAmount

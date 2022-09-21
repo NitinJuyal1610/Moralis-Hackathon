@@ -5,6 +5,8 @@ const Calculator = () => {
     const [coin, setCoin] = useState();
     const [years, setYears] = useState()
     const [amount, setAmount] = useState()
+    const [buy, setBuy] = useState(false);
+
     return (
         <>
             <form className={styles.form}>
@@ -41,7 +43,10 @@ const Calculator = () => {
                         <option className={styles.option} value={3}>ETH</option>
                     </select>
                 </div>
-                <button className={styles.Btn} >Check policy</button>
+                <button className={styles.Btn} onClick={() => { setBuy(true) }}>Check policy</button>
+                {buy ? (
+                    <button className={styles.Btn}>Buy</button>
+                ) : null}
             </form>
         </>
     )

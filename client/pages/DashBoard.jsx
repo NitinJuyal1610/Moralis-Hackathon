@@ -10,6 +10,12 @@ const DashBoard = () => {
     const handleToggle = () => {
         setPopUp(!popUp)
     }
+    const unixTime = 1210981217;
+    function getDate() {
+        const date = new Date(unixTime * 1000);
+        console.log(date.toLocaleDateString());
+    }
+    getDate()
     return (
         <><section className={styles.body}>
 

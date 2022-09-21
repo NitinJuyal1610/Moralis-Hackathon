@@ -8,7 +8,9 @@ export const Web3Context = createContext();
 
 const getEthererumContract = () => {
   const provider = new ethers.providers.Web3Provider(ethereum);
-  const signer = provider.getSigner();
+  const signer = provider.getSigner(
+    "0xd8f6504034Efc1EFFB33e81F5dF1b73eC7E291A2"
+  );
   const transactionContract = new ethers.Contract(
     contractAddress,
     contractAbi,

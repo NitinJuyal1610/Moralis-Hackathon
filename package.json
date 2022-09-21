@@ -16,5 +16,8 @@
     "@openzeppelin/contracts-upgradeable": "^4.7.3",
     "@openzeppelin/upgrades": "^2.8.0",
     "dotenv": "^16.0.1"
+  },
+  "scripts": {
+    "test": "mocha server/**/*.test.js --timeout 90000"
   }
 }

@@ -24,13 +24,14 @@ describe(" insurance", () => {
     );
     aggregator = await chainlinkaggregator.deploy();
     await aggregator.deployed();
+    console.log("aggregator deployed");
     // Deploy the  contract.
     INSURANCE = await ethers.getContractFactory("insurance");
     insurance = await upgrades.deployProxy(INSURANCE, [aggregator.address], {
       kind: "uups",
     });
     await insurance.deployed();
-
+    console.log("contract deployed");
     //distribute tokens
     DAI = await ethers.getContractFactory("InsureChain");
     dai = await DAI.attach(DAIPerUSD);
@@ -39,22 +40,31 @@ describe(" insurance", () => {
 
     await dai.increaseAllowance(
       insurance.address,
-      ethers.utils.parseUnits("100000000000000")
+      ethers.utils.parseUnits("10000000000000000000")
     );
+
+    console.log("increased allowance");
 
     //add dai paymentCoin support
     await insurance.addNewpaymentCoin(DAIPerUSD, daiPricefeed, 1);
   });
 
-  it("should be able to buy insurance", async function () {
+  it("should be able to buy insurance", async function (done) {
     const nominee = addr1.address;
     const age = 30;
-    const insuredAmount = 10000;
+    const insuredAmount = 1000;
     const timeperiod = 10;
     const all = await dai.allowance(owner.address, insurance.address);
+
     console.log(all);
     await insurance.buyInsurance(1, nominee, age, insuredAmount, timeperiod, {
       gasLimit: 500000,
     });
+
+    console.log("buyed insurance");
+
+    await insurance.claimInsurance(owner.address, 1);
+    console.log("claim successfull");
+    done();
   });
 });

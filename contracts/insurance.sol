@@ -342,7 +342,7 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
             "changeNominee: you are not insured"
         );
         address nominee = insuranceHolder.nominee;
-        uint256 insuredAmount = insuranceHolder.insuredAmount;
+        uint256 insuredAmount = insuranceHolder.insuredAmount*10**18;
 
         IERC20Upgradeable(paymentCoinAddress).safeTransferFrom(
             address(this), // on hold

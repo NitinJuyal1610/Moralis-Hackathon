@@ -29,6 +29,7 @@ const Register = () => {
         { phoneNumber: phoneNumber },
         { gender: gender }
       );
+      const DeathCertNumber = "65875325412330025";
       signup(
         username,
         password,
@@ -36,6 +37,7 @@ const Register = () => {
         {
           phoneNumber: phoneNumber,
           gender: gender,
+          DeathCertNumber: DeathCertNumber,
         },
         {
           onError: () => {

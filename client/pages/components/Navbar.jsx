@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import styles from "../../styles/Navbar.module.css";
 import { useMoralis } from "react-moralis";
 import { Web3Context } from "../context/InsureContext";
+import { useRouter } from "next/router";
 
 export const Navbar = () => {
   const { user, isAuthenticated, isAuthenticating, logout } = useMoralis();
@@ -12,12 +13,11 @@ export const Navbar = () => {
   const { isWeb3Enabled, enableWeb3 } = useMoralis();
 
   const [disabled, setDisabled] = useState(false);
-
+  const router = useRouter();
   useEffect(() => {
     if (!isWeb3Enabled) enableWeb3();
     (async () => {
       const data1 = await getInfo();
-
       setDisabled(data1.isInsured);
     })();
   }, []);
@@ -51,6 +51,7 @@ export const Navbar = () => {
                       className={styles.Signup_btn}
                       onClick={() => {
                         logout();
+                        router.push("/Policy");
                       }}
                       disabled={isAuthenticating}
                     >

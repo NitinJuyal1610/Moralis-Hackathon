@@ -28,7 +28,7 @@ async function main() {
   stablecoin = await StableCoin.attach(contractAddr);
   await stablecoin.increaseAllowance(
     insurance.address,
-    ethers.utils.parseUnits("100000000000000")
+    ethers.utils.parseUnits("10000000000000000000000")
   );
   console.log("allowance granted");
 }

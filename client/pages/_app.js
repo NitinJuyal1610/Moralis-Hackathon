@@ -17,6 +17,6 @@ function MyApp({ Component, pageProps }) {
     </InsureContext>
   );
 }
-import insureContext from "./context/InsureContext";
+
 
 export default MyApp;

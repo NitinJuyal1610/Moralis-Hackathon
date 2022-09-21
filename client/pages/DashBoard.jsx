@@ -6,9 +6,11 @@ import { useMoralis } from "react-moralis";
 import Calculator from "./components/Calculator";
 import { Web3Context } from "./context/InsureContext";
 import Disc from "./components/Disc";
+import Router, { useRouter } from "next/router";
 const DashBoard = () => {
   const [popUp, setPopUp] = useState(false);
   const [data, setData] = useState(null);
+  const [userNum, setUserNum] = useState(null);
   const { user, isWeb3Enabled, enableWeb3 } = useMoralis();
   const handleToggle = () => {
     setPopUp(!popUp);
@@ -28,12 +30,30 @@ const DashBoard = () => {
     })();
   }, []);
 
-  const { buyInsurance, payPrem, getInfo, checkPremium } =
-    useContext(Web3Context);
-
-  const payPremium = async () => {
+  const { buyInsurance, payPrem, getInfo, claim } = useContext(Web3Context);
+  const router = useRouter();
+  const payPremium = async (e) => {
+    e.preventDefault();
     await payPrem(1);
     console.log("payed");
+    const data1 = await getInfo();
+    setData(data1);
+  };
+
+  const CheckandClaim = async (e) => {
+    e.preventDefault();
+    const num = user?.get("DeathCertNumber");
+    if (num == userNum) {
+      try {
+        await claim(data.owner, 1);
+        console.log("claimed SuccessFully");
+        router.push("/Policy");
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert("could not claim now");
+    }
   };
   return (
     <>
@@ -60,7 +80,7 @@ const DashBoard = () => {
               <span className={styles.span}>
                 <h3 className={styles.key}>Insured Amount :</h3>
                 <h3 className={styles.values}>
-                  {`${data?.insuredAmount}`?.toString()}
+                  {`${data?.insuredAmount}`?.toString()}$
                 </h3>
               </span>
 
@@ -79,13 +99,13 @@ const DashBoard = () => {
               <span className={styles.span}>
                 <h3 className={styles.key}>Monthly Premium Amount :</h3>
                 <h3 className={styles.values}>
-                  {`${data?.premium}`.toString()}
+                  {`${data?.premium}`.toString()}$
                 </h3>
               </span>
               <span className={styles.span}>
                 <h3 className={styles.key}>Premium Paid :</h3>
                 <h3 className={styles.values}>
-                  {`${data?.premiumPaid}`.toString()}
+                  {`${data?.premiumPaid}`.toString()}$
                 </h3>
               </span>
               <div className={styles.action}>
@@ -109,19 +129,14 @@ const DashBoard = () => {
           <div className={styles.flex_right}>
             {popUp ? (
               <form className={styles.form} type="submit">
-                <label className={styles.label}>Enter Nominee Address</label>
-                <input
-                  className={styles.input}
-                  type="text"
-                  placeholder="Nominee Address"
-                  required
-                />
                 <label className={styles.label}>
                   Enter Death Certificate No.
                 </label>
                 <input
                   className={styles.input}
                   type="text"
+                  value={userNum}
+                  onChange={(e) => setUserNum(e.target.value)}
                   placeholder="Death certificate"
                   required
                 />
@@ -129,6 +144,9 @@ const DashBoard = () => {
                   className={styles.submit_btn}
                   type="submit"
                   value="submit"
+                  onClick={(e) => {
+                    CheckandClaim(e);
+                  }}
                 />
               </form>
             ) : null}

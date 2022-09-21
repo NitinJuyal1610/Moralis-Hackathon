@@ -33,6 +33,7 @@
 .gender,
 .nominee {
   margin: 5px;
+  font-size: 20px;
   text-transform: capitalize;
 }
 .form {
@@ -116,7 +117,7 @@
 
 .upload {
   align-items: center;
-  background-color: #0a66c2;
+  background-color: #171436;
   border: 0;
   border-radius: 100px;
   box-sizing: border-box;

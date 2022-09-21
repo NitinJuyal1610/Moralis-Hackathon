@@ -11,6 +11,7 @@ const Profile = () => {
 
   const handleSubmission = async (img) => {
     await FileUpload(img, user, "ProfileImage");
+    window.location.reload();
   };
 
   const enable = () => {
@@ -81,7 +82,10 @@ const Profile = () => {
                 <img className={styles.image} src={user.get("ProfileImage")} />
               ) : (
                 //add image uploader
+
                 <div>
+                  <img className={styles.image} src="/img.jpg"></img>
+                  <br />
                   <input
                     onChange={(e) => {
                       handleSubmission(e.target.files);
@@ -91,18 +95,26 @@ const Profile = () => {
                     hidden={true}
                   />
                   <label className={styles.upload} for="files">
-                    Select file
+                    Select Profile Image
                   </label>
                 </div>
               )}
             </div>
 
-            <h3 className={styles.name}>Name : {user?.get("username")}</h3>
-            <h3 className={styles.gender}>Gender : {user?.get("gender")}</h3>
-            <h3 className={styles.phoneNumber}>
-              Mobile No. : {user?.get("phoneNumber")}
-            </h3>
-            <h3 className={styles.email}>Email : {user?.get("email")}</h3>
+            <p className={styles.name}>
+              <b>Name :</b>
+              {user?.get("username")}
+            </p>
+            <p className={styles.gender}>
+              <b>Gender :</b> {user?.get("gender")}
+            </p>
+            <p className={styles.phoneNumber}>
+              <b>Mobile No. :</b> {user?.get("phoneNumber")}
+            </p>
+            <p className={styles.email}>
+              <b>Email : </b>
+              {user?.get("email")}
+            </p>
             {/* <h3 className={styles.nominee}>Email: {user?.get("email")}</h3> */}
           </div>
         </div>

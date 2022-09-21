@@ -2,30 +2,22 @@ import Link from "next/link";
 import React, { useEffect, useState, useContext } from "react";
 import styles from "../../styles/Navbar.module.css";
 import { useMoralis } from "react-moralis";
+import { Web3Context } from "../context/InsureContext";
 
 export const Navbar = () => {
   const { user, isAuthenticated, isAuthenticating, logout } = useMoralis();
-  var policy = true
-  // const [matches, setMatches] = useState(
-  //   window.matchMedia("(min-width: 480px)").matches
-  // )
-  // useEffect(() => {
-  //   window
-  //     .matchMedia("(min-width: 480px)")
-  //     .addEventListener('change', e => setMatches(e.matches));
-  // }, []);
-  // // window.addEventListener('load', () => {
-  // window.onload = function () {
-  //   const togglebtn = document.querySelector(".nav_toggle")
-  //   console.log(togglebtn)
-  //   togglebtn.addEventListener('click', togglefunction)
-  // }
-  // function togglefunction() {
-  //   var nav = document.querySelector(".nav_item")
-  //   nav.classList.add("active")
-  // }
+  const { buyInsurance, payPrem, getInfo, checkPremium } =
+    useContext(Web3Context);
 
-  // })
+  const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      const data1 = await getInfo();
+
+      setDisabled(data1.isInsured);
+    })();
+  }, []);
 
   return (
     <div className={styles.nav_component}>
@@ -62,18 +54,16 @@ export const Navbar = () => {
                       Logout
                     </button>
                   </Link>
-                  {policy && <Link href="/DashBoard" className={styles.User_Route}>
-                    <button className={styles.Signup_btn}>Dashboard</button>
-                  </Link>
-                  }
+                  {disabled && (
+                    <Link href="/DashBoard" className={styles.User_Route}>
+                      <button className={styles.Signup_btn}>Dashboard</button>
+                    </Link>
+                  )}
                 </>
-
               ) : (
                 <Link href="/Login" className={styles.User_Route}>
                   <button className={styles.Signup_btn}>Sign Up/login</button>
                 </Link>
-
-
               )}
             </>
           </li>

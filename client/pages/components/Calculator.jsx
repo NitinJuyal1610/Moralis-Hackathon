@@ -1,14 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useMoralis } from "react-moralis";
 import styles from "../../styles/Policy.module.css";
 import { Web3Context } from "../context/InsureContext";
+import { useRouter } from "next/router";
 
 const Calculator = () => {
-  const [coin, setCoin] = useState();
+  const [coin, setCoin] = useState(1);
   const [years, setYears] = useState();
   const [amount, setAmount] = useState();
   const [age, setAge] = useState();
+  const [premium, setPremium] = useState("");
+  const [buy, setBuy] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+  const { user } = useMoralis();
   const { buyInsurance, payPrem, getInfo, checkPremium } =
     useContext(Web3Context);
+
+  const router = useRouter();
   //   const test = async (e) => {
   //     e.preventDefault();
   //     const nominee = "0xb6cc336d792c5f3f5684e68666c3de2a4532bdc6";
@@ -27,9 +35,34 @@ const Calculator = () => {
 
   const checkPrem = async (e) => {
     e.preventDefault();
+
     const premium = await checkPremium(age, amount, years);
-    console.log(premium.toString());
+    setPremium(premium.toString());
+    setBuy(true);
   };
+
+  const buyPrem = async (e) => {
+    e.preventDefault();
+    const nominee = (user?.get("NomineeAddress"))[0];
+    console.log(coin, nominee, age, amount, years);
+
+    await buyInsurance(coin, nominee, age, amount, years, {
+      gasLimit: 500000,
+    });
+
+    const data1 = await getInfo();
+    if (data1.isInsured) {
+      router.push("/DashBoard");
+    }
+  };
+
+  useEffect(() => {
+    (async () => {
+      const data1 = await getInfo();
+      setDisabled(data1.isInsured);
+    })();
+  }, []);
+
   return (
     <>
       <form className={styles.form}>
@@ -97,6 +130,7 @@ const Calculator = () => {
             </option>
           </select>
         </div>
+
         <button
           className={styles.Btn}
           onClick={(e) => {
@@ -105,6 +139,21 @@ const Calculator = () => {
         >
           Check policy
         </button>
+
+        {buy ? (
+          <div>
+            <div className={styles.span}>Monthly Premium: {premium}$</div>{" "}
+            <button
+              hidden={disabled}
+              className={styles.Btn}
+              onClick={(e) => {
+                buyPrem(e);
+              }}
+            >
+              Buy
+            </button>
+          </div>
+        ) : null}
       </form>
     </>
   );

@@ -36,20 +36,23 @@ describe(" insurance", () => {
     dai = await DAI.attach(DAIPerUSD);
 
     // gib insuranceV1 contract allowance for Dai tokens.
-    dai.connect(addr1).approve(insurance.address, 1000 * 10 ** 18);
-    dai.approve(insurance.address, 1000 * 10 ** 18);
+
+    await dai.increaseAllowance(
+      insurance.address,
+      ethers.utils.parseUnits("100000000000000")
+    );
 
     //add dai paymentCoin support
     await insurance.addNewpaymentCoin(DAIPerUSD, daiPricefeed, 1);
   });
-  
 
   it("should be able to buy insurance", async function () {
     const nominee = addr1.address;
     const age = 30;
     const insuredAmount = 10000;
     const timeperiod = 10;
-
+    const all = await dai.allowance(owner.address, insurance.address);
+    console.log(all);
     await insurance.buyInsurance(1, nominee, age, insuredAmount, timeperiod, {
       gasLimit: 500000,
     });

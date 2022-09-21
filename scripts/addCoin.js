@@ -2,10 +2,10 @@ const { ethers } = require("hardhat");
 
 async function main() {
   const [owner, addr1] = await ethers.getSigners();
-  const Pricefeed = "0xd0D5e3DB44DE05E9F294BB0a3bEEaF030DE24Ada";
+  const Pricefeed = "0x572dDec9087154dC5dfBB1546Bb62713147e0Ab0";
   const CoinPerUSD = "0x98cC656e2dEb3706FCd073C236b12e7e919FecCF";
 
-  const insuranceV1ProxyContract = "0xf9f711873286B8848F436A2360EA8ed2Fa5d7739";
+  const insuranceV1ProxyContract = "0x19E681B27712e5de39cB3B3c4c1467aeE45518C9";
 
   const INSURANCE = await ethers.getContractFactory("insurance");
   const insurance = await INSURANCE.attach(insuranceV1ProxyContract);

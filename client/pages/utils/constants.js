@@ -1,4 +1,4 @@
-import abi from "./abi.json";
+import abi from "../../../artifacts/contracts/insurance.sol/insurance.json";
 
-export const contractAddress = "0xf9f711873286B8848F436A2360EA8ed2Fa5d7739";
+export const contractAddress = "0x19E681B27712e5de39cB3B3c4c1467aeE45518C9";
 export const contractAbi = abi.abi;

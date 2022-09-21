@@ -23,6 +23,14 @@ async function main() {
   );
   await insurance.deployed();
   console.log("\n insurance deployed at", insurance.address);
+  const contractAddr = "0x98cC656e2dEb3706FCd073C236b12e7e919FecCF";
+  StableCoin = await ethers.getContractFactory("InsureChain");
+  stablecoin = await StableCoin.attach(contractAddr);
+  await stablecoin.increaseAllowance(
+    insurance.address,
+    ethers.utils.parseUnits("100000000000000")
+  );
+  console.log("allowance granted");
 }
 main()
   .then(() => process.exit(0))

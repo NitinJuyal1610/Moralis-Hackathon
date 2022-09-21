@@ -177,7 +177,7 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         );
 
         address priceFeed = ListOfpaymentCoins[_paymentCoinID].priceFeed;
-        uint256 amount = amountOfCoinsToSend(priceFeed, premium);
+        uint256 amount = amountOfCoinsToSend(priceFeed, premium)*10**18;
 
         ListOfInsuranceHolders[msgSender] = InsuranceHolder(
             msgSender, // on hold
@@ -193,7 +193,7 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
             false,
             false
         );
-       console.log("amount",amount);
+       
         IERC20Upgradeable(paymentCoinAddress).safeTransferFrom(
             msgSender, // on hold
             address(this),
@@ -304,7 +304,7 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         );
 
         address priceFeed = ListOfpaymentCoins[_paymentCoinID].priceFeed;
-        uint256 amount = amountOfCoinsToSend(priceFeed, premium);
+        uint256 amount = amountOfCoinsToSend(priceFeed, premium)*10**18;
         uint256 currentTimeStamp = block.timestamp;
 
         IERC20Upgradeable(paymentCoinAddress).safeTransferFrom(

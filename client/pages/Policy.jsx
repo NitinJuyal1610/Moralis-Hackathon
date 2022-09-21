@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Navbar from "./components/Navbar";
 import styles from "../styles/Policy.module.css";
 import Disc from "./components/Disc";
 import Calculator from "./components/Calculator";
+import { Web3Context } from "./context/InsureContext";
 
 const Policy = () => {
   const [coin, setCoin] = useState();

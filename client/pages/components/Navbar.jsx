@@ -9,9 +9,12 @@ export const Navbar = () => {
   const { buyInsurance, payPrem, getInfo, checkPremium } =
     useContext(Web3Context);
 
+  const { isWeb3Enabled, enableWeb3 } = useMoralis();
+
   const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
+    if (!isWeb3Enabled) enableWeb3();
     (async () => {
       const data1 = await getInfo();
 
@@ -37,9 +40,11 @@ export const Navbar = () => {
                 Policies
               </a>
             </Link>
-            <a className={styles.nav_link} href="">
-              Our Team
-            </a>
+            <Link className={styles.Policy_Route} href="/Profile">
+              <a className={styles.nav_link} href="">
+                Profile
+              </a>
+            </Link>
             <>
               {user ? (
                 <>

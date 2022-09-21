@@ -158,6 +158,11 @@
         },
         {
           "internalType": "uint256",
+          "name": "timePeriod",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
           "name": "insuredAmount",
           "type": "uint256"
         },
@@ -179,11 +184,6 @@
         {
           "internalType": "bool",
           "name": "isInsured",
-          "type": "bool"
-        },
-        {
-          "internalType": "bool",
-          "name": "isMatured",
           "type": "bool"
         },
         {
@@ -365,6 +365,11 @@
             },
             {
               "internalType": "uint256",
+              "name": "timePeriod",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
               "name": "insuredAmount",
               "type": "uint256"
             },
@@ -386,11 +391,6 @@
             {
               "internalType": "bool",
               "name": "isInsured",
-              "type": "bool"
-            },
-            {
-              "internalType": "bool",
-              "name": "isMatured",
               "type": "bool"
             },
             {

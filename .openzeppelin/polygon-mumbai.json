@@ -820,6 +820,11 @@
       "address": "0x19E681B27712e5de39cB3B3c4c1467aeE45518C9",
       "txHash": "0x18e52a561b46fab63318f765d8c2fc1c9a54b09389a30e90811f73a7eaa21375",
       "kind": "uups"
+    },
+    {
+      "address": "0x03397a95C102f031d19e0b7bb75306db6052D375",
+      "txHash": "0x05022061505a30d1d06c87911292beb4c426dbf5954bb887df2a96a776d8a354",
+      "kind": "uups"
     }
   ],
   "impls": {
@@ -7203,6 +7208,265 @@
               }
             ],
             "numberOfBytes": "320"
+          },
+          "t_struct(paymentCoin)1674_storage": {
+            "label": "struct insurance.paymentCoin",
+            "members": [
+              {
+                "label": "paymentCoinAddress",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "priceFeed",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "listPointer",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "paymentCoinId",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              }
+            ],
+            "numberOfBytes": "128"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    },
+    "4af84be8ba7b6df149ccd85bd2a9bfeba36b7c4ff531f8e6a9ec99a79901f329": {
+      "address": "0x4fdEd3aa5Ff5D0598432dD86fbb7DBb4D5520571",
+      "txHash": "0x69f3cc366101548a858d3162978a6eaa74ef33cf6877b655f489a054963fcb4e",
+      "layout": {
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ERC1967UpgradeUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/ERC1967/ERC1967UpgradeUpgradeable.sol:211"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "151",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "UUPSUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol:107"
+          },
+          {
+            "label": "aggregator",
+            "offset": 0,
+            "slot": "201",
+            "type": "t_contract(chainlinkAggregator)1629",
+            "contract": "insurance",
+            "src": "contracts/insurance.sol:20"
+          },
+          {
+            "label": "listOfSupportedpaymentCoinAddress",
+            "offset": 0,
+            "slot": "202",
+            "type": "t_array(t_address)dyn_storage",
+            "contract": "insurance",
+            "src": "contracts/insurance.sol:22"
+          },
+          {
+            "label": "ListOfpaymentCoins",
+            "offset": 0,
+            "slot": "203",
+            "type": "t_mapping(t_uint256,t_struct(paymentCoin)1674_storage)",
+            "contract": "insurance",
+            "src": "contracts/insurance.sol:55"
+          },
+          {
+            "label": "paymentCoinIds",
+            "offset": 0,
+            "slot": "204",
+            "type": "t_array(t_uint256)dyn_storage",
+            "contract": "insurance",
+            "src": "contracts/insurance.sol:58"
+          },
+          {
+            "label": "ListOfInsuranceHolders",
+            "offset": 0,
+            "slot": "205",
+            "type": "t_mapping(t_address,t_struct(InsuranceHolder)1699_storage)",
+            "contract": "insurance",
+            "src": "contracts/insurance.sol:61"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_array(t_uint256)dyn_storage": {
+            "label": "uint256[]",
+            "numberOfBytes": "32"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(chainlinkAggregator)1629": {
+            "label": "contract chainlinkAggregator",
+            "numberOfBytes": "20"
+          },
+          "t_mapping(t_address,t_struct(InsuranceHolder)1699_storage)": {
+            "label": "mapping(address => struct insurance.InsuranceHolder)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(paymentCoin)1674_storage)": {
+            "label": "mapping(uint256 => struct insurance.paymentCoin)",
+            "numberOfBytes": "32"
+          },
+          "t_struct(InsuranceHolder)1699_storage": {
+            "label": "struct insurance.InsuranceHolder",
+            "members": [
+              {
+                "label": "owner",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "nominee",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "insuranceStartTimeStamp",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "lastPremiumPaidTimeStamp",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "nextPremiumTimeStamp",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "timePeriod",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "5"
+              },
+              {
+                "label": "insuredAmount",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "6"
+              },
+              {
+                "label": "premium",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "7"
+              },
+              {
+                "label": "premiumPaid",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "8"
+              },
+              {
+                "label": "paymentCoinId",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "9"
+              },
+              {
+                "label": "isInsured",
+                "type": "t_bool",
+                "offset": 0,
+                "slot": "10"
+              },
+              {
+                "label": "isTerminated",
+                "type": "t_bool",
+                "offset": 1,
+                "slot": "10"
+              }
+            ],
+            "numberOfBytes": "352"
           },
           "t_struct(paymentCoin)1674_storage": {
             "label": "struct insurance.paymentCoin",

@@ -13,6 +13,9 @@
 .authButton {
   height: 50px;
   width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 5px;
   border: none;
   color: #fff;
@@ -118,4 +121,19 @@
   padding: 10px;
   background-color: #e9f4ff;
   align-items: center;
+}
+@media screen and (max-width: 584px) {
+  .body {
+    width: 130vw;
+    height: 120vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .authButton {
+    width: 160px;
+    background: #2d3b55;
+  }
+  .authM {
+    text-transform: capitalize;
+  }
 }

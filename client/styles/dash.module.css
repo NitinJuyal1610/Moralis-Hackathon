@@ -116,6 +116,7 @@
 }
 .Calculator_box {
   margin-left: 5vw;
+  background-color: #e9f4ff;
 }
 .disc {
   display: flex;
@@ -126,4 +127,61 @@
   background-color: #e9f4ff;
   width: 100%;
   height: 100vh;
+}
+@media screen and (max-width: 584px) {
+  .body {
+    margin-bottom: 10px;
+    padding-bottom: 60px;
+  }
+  .section_flex {
+    flex-direction: column;
+    justify-content: center;
+    width: 195vw;
+  }
+  .panel_component {
+    flex-direction: column;
+    align-items: center;
+  }
+  .panel_box {
+    margin-left: 0;
+    padding-left: 0;
+    display: block;
+    font-size: 1.6rem;
+  }
+  .span {
+    width: 600px;
+    margin-top: 20px;
+    height: 60px;
+  }
+  .key,
+  .values {
+    font-size: 1.8rem;
+  }
+  .action {
+    margin-top: 30px;
+  }
+  .btn {
+    width: 45%;
+    height: 80px;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+  }
+  .btn:nth-child(2) {
+    width: 45%;
+  }
+  .Calculator_box {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+  .disc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    width: 190vw;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    margin-top: 40px;
+  }
 }

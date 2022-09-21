@@ -20,3 +20,19 @@
   text-transform: capitalize;
   padding: 10px 10px 0px 20px;
 }
+@media screen and (max-width: 584px) {
+  .Accordion {
+    width: 100%;
+    max-width: none;
+    font-size: 1.5rem;
+    margin-left: 20px;
+  }
+  .title {
+    font-size: 1.5rem;
+    width: auto;
+  }
+  .title,
+  .text {
+    font-size: 1.8rem;
+  }
+}

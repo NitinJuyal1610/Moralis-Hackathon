@@ -11,7 +11,16 @@ const Policy = () => {
   const [years, setYears] = useState();
   const [amount, setAmount] = useState();
   // const [isSmallScreen, setIsSmallScreen] = useState("100%");
+  const buy = true
+  const buyPrem = async (e) => {
+    e.preventDefault();
+    const nominee = (user?.get("NomineeAddress"))[0];
+    console.log(1, nominee, age, amount, years);
 
+    await buyInsurance(1, nominee, age, amount, years, {
+      gasLimit: 500000,
+    });
+  }
   // useEffect(() => {
   //     setIsSmallScreen(!window.matchMedia("(max-width: 700px)").matches ? "200px" : "100%");
   // }, []);
@@ -80,14 +89,43 @@ const Policy = () => {
               </div>
             </div>
           </div>
-          <Calculator />
         </div>
+        <Calculator />
       </section>
-      <container className={styles.container}>
+      <section className={styles.buy_policy}>
+      </section>
+      <container className={styles.container2}>
+        <div className={styles.Policy_}><div className={styles.Policy_info}>
+          <h1 className={styles.heading1}>Standard Plan</h1>
+          <div className={styles.col_flex}>
+            <div className={styles.row_flex}>
+              <h2 className={styles.text_spacing}> Insurer  : Insurechain</h2>
+              <h2 className={styles.text_spacing}> Life Cover : 40,000$</h2>
+              <h2 className={styles.text_spacing}> Claim Settlement : 100%</h2>
+            </div>
+            <div className={styles.row_flex}>
+              <h2 className={styles.text_spacing}> Time Period : 60 Years</h2>
+              <h2 className={styles.text_spacing}> Monthly premium : 33.3 USD </h2>
+            </div>
+            {buy ? (
+              <div>
+                <button
+                  className={styles.Btn}
+                  onClick={(e) => {
+                    buyPrem(e);
+                  }}
+                >
+                  Buy
+                </button>
+              </div>
+            ) : null}
+          </div>
+        </div>
+        </div>
         <div className={styles.info_box}>
           <Disc />
         </div>
-      </container>
+      </container >
     </>
   );
 };

@@ -99,6 +99,13 @@ const Calculator = () => {
         >
           Check policy
         </button>
+        <a
+          className={styles.Btn2}
+          href="https://ipfs.io/ipfs/bafybeieqhxlige5ca2vhk4izqsw6gpic7ripd5jh5arbi7eeyz54yilkxy/Product.docx"
+          passHref={true}
+        >
+          Download brochure
+        </a>
 
         {buy ? (
           <div>

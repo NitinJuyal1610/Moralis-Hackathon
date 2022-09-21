@@ -42,12 +42,12 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         uint256 insuranceStartTimeStamp;
         uint256 lastPremiumPaidTimeStamp;
         uint256 nextPremiumTimeStamp;
+        uint256 timePeriod;
         uint256 insuredAmount;
         uint256 premium;
         uint256 premiumPaid;
         uint256 paymentCoinId;
         bool isInsured;
-        bool isMatured;
         bool isTerminated;
     }
 
@@ -185,12 +185,12 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
             block.timestamp,
             block.timestamp,
             block.timestamp + 31 days,
+            _timePeriod,
             _insuredAmount,
             premium,
             premium,
             _paymentCoinID,
             true,
-            false,
             false
         );
        

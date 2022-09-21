@@ -9,9 +9,12 @@ export const Navbar = () => {
   const { buyInsurance, payPrem, getInfo, checkPremium } =
     useContext(Web3Context);
 
+  const { isWeb3Enabled, enableWeb3 } = useMoralis();
+
   const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
+    if (!isWeb3Enabled) enableWeb3();
     (async () => {
       const data1 = await getInfo();
 

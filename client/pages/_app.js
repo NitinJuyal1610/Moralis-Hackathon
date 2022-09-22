@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter  } from "react-router-dom";
 import "../styles/globals.css";
 import { MoralisProvider } from "react-moralis";
 import { CookiesProvider } from "react-cookie";
@@ -10,9 +10,13 @@ function MyApp({ Component, pageProps }) {
         appId={process.env.NEXT_PUBLIC_APP_ID}
         serverUrl={process.env.NEXT_PUBLIC_SERVER_URL}
       >
-        <CookiesProvider>
+        <HashRouter
+           basename={optionalString}
+           getUserConfirmation={optionalFunc}
+           hashType={optionalString}
+        >
           <Component {...pageProps} />
-        </CookiesProvider>
+        </HashRouter>
       </MoralisProvider>
     </InsureContext>
   );

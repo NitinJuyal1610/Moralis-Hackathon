@@ -2,9 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styles from "../styles/Home.module.css";
-import Navbar from "./components/Navbar";
+import Navbar from "../components/Navbar";
 import Register from "./Register";
-import Hero from "./components/Hero";
+import Hero from "../components/Hero";
 import { useRouter } from "next/router";
 import { useMoralis } from "react-moralis";
 
@@ -18,7 +18,7 @@ export default function Home() {
           name="viewport"
           content="width=device-width, initial-scale=1.0"
         ></meta>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/public/favicon.png" />
       </Head>
       <Navbar />
       <Hero />

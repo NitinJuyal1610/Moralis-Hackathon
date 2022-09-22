@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useMoralis } from "react-moralis";
 import styles from "../styles/Login.module.css";
-import Navbar from "./components/Navbar";
+import Navbar from "../components/Navbar";
 // import { useMoralis } from 'react-moralis'
 
 const Login = () => {

@@ -2,12 +2,12 @@ import LaunchIcon from '@mui/icons-material/Launch';
 import Image from 'next/image'
 import Link from 'next/link';
 import React from 'react'
-import styles from '../../styles/Hero.module.css'
-import hero from '../../static/Insurance-cuate.svg'
-import moralisIcon from '../../static/moralis.svg'
-import hardhat from '../../static/hardhat-logo-dark.484eb916.svg'
-import ether from '../../static/ether.js.svg'
-import chainLink from '../../static/chainlink.svg'
+import styles from '../styles/Hero.module.css'
+import hero from '../static/Insurance-cuate.svg'
+import moralisIcon from '../static/moralis.svg'
+import hardhat from '../static/hardhat-logo-dark.484eb916.svg'
+import ether from '../static/ether.js.svg'
+import chainLink from '../static/chainlink.svg'
 
 const Hero = () => {
 

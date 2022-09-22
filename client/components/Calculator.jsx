@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useMoralis } from "react-moralis";
-import styles from "../../styles/Policy.module.css";
+import styles from "../styles/Policy.module.css";
 import { Web3Context } from "../context/InsureContext";
 import { useRouter } from "next/router";
 

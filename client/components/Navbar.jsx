@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState, useRef, useContext } from "react";
-import styles from "../../styles/Navbar.module.css";
+import styles from "../styles/Navbar.module.css";
 import { useMoralis } from "react-moralis";
 import { Web3Context } from "../context/InsureContext";
 import { useRouter } from "next/router";

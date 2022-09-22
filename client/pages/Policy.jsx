@@ -122,7 +122,7 @@ const Policy = () => {
                 <h2 className={styles.text_spacing}> Time Period : 60 Years</h2>
                 <h2 className={styles.text_spacing}>
                   {" "}
-                  Monthly premium : 33.3 USD{" "}
+                  Monthly premium : 33 USD{" "}
                 </h2>
               </div>
               <div>

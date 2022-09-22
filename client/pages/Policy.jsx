@@ -11,6 +11,7 @@ const Policy = () => {
   const [coin, setCoin] = useState();
   const [years, setYears] = useState();
   const [amount, setAmount] = useState();
+  const [disabled, setDisabled] = useState(false);
   const { user, isWeb3Enabled, enableWeb3, account } = useMoralis();
   const { buyInsurance, payPrem, getInfo, claim } = useContext(Web3Context);
 
@@ -31,6 +32,14 @@ const Policy = () => {
       router.push("/DashBoard");
     }
   };
+
+  useEffect(() => {
+    (async () => {
+      const data1 = await getInfo();
+      console.log(data1);
+      setDisabled(data1.isInsured);
+    })();
+  }, []);
 
   const router = useRouter();
   // useEffect(() => {
@@ -132,7 +141,7 @@ const Policy = () => {
                   Download brochure
                 </a>
               </div>
-              <div>
+              <div hidden={disabled}>
                 <span className={styles.span}>Enter Your Age:</span>
                 <input
                   className={styles.input}

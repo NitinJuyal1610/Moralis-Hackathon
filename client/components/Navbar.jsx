@@ -76,7 +76,7 @@ export const Navbar = () => {
               </a>
             </Link>
             <>
-              {user && user.get("password") ? (
+              {user && user.get("email") ? (
                 <>
                   <Link href="/">
                     <button

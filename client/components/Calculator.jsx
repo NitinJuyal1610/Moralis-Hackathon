@@ -43,6 +43,7 @@ const Calculator = () => {
   useEffect(() => {
     (async () => {
       const data1 = await getInfo();
+      console.log(data1);
       setDisabled(data1.isInsured);
     })();
   }, []);
@@ -110,15 +111,16 @@ const Calculator = () => {
         {buy ? (
           <div>
             <div className={styles.span}>Monthly Premium: {premium}$</div>{" "}
-            <button
-              hidden={disabled}
-              className={styles.Btn}
-              onClick={(e) => {
-                buyPrem(e);
-              }}
-            >
-              Buy
-            </button>
+            {disabled ? null : (
+              <button
+                className={styles.Btn}
+                onClick={(e) => {
+                  buyPrem(e);
+                }}
+              >
+                Buy
+              </button>
+            )}
           </div>
         ) : null}
       </form>

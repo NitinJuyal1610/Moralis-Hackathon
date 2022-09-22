@@ -1,11 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-import Navbar from "./components/Navbar";
+import Navbar from "../components/Navbar";
 import styles from "../styles/dash.module.css";
-import { style } from "@mui/system";
 import { useMoralis } from "react-moralis";
-import Calculator from "./components/Calculator";
-import { Web3Context } from "./context/InsureContext";
-import Disc from "./components/Disc";
+import Calculator from "../components/Calculator";
+import { Web3Context } from "../context/InsureContext";
+import Disc from "../components/Disc";
 import Router, { useRouter } from "next/router";
 const DashBoard = () => {
   const [popUp, setPopUp] = useState(false);

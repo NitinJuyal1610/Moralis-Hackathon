@@ -2,12 +2,12 @@ import LaunchIcon from '@mui/icons-material/Launch';
 import Image from 'next/image'
 import Link from 'next/link';
 import React from 'react'
-import styles from '../../styles/Hero.module.css'
-import hero from '../../static/Insurance-cuate.svg'
-import moralisIcon from '../../static/moralis.svg'
-import hardhat from '../../static/hardhat-logo-dark.484eb916.svg'
-import ether from '../../static/ether.js.svg'
-import chainLink from '../../static/chainlink.svg'
+import styles from '../styles/Hero.module.css'
+import hero from '../static/Insurance-cuate.svg'
+import moralisIcon from '../static/moralis.svg'
+import hardhat from '../static/hardhat-logo-dark.484eb916.svg'
+import ether from '../static/ether.js.svg'
+import chainLink from '../static/chainlink.svg'
 
 const Hero = () => {
 
@@ -20,10 +20,10 @@ const Hero = () => {
                         <h1 className={styles.heading_h2}>Customize Insurance Plan as you wish</h1>
                         <h1 className={styles.heading_h2}>Smart Contract based Claim process</h1>
                         <div className={styles.Btn_section}>
-                            <Link href="/Policy">
+                            <Link href="/policy">
                                 <button className={styles.btn}>See Plans</button>
                             </Link>
-                            <Link href="/Login">
+                            <Link href="/pogin">
 
                                 <button className={styles.btn}>Login</button>
                             </Link>

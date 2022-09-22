@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useMoralis } from "react-moralis";
 import "react-image-upload/dist/index.css";
-import Navbar from "./components/Navbar";
+import Navbar from "../components/Navbar";
 import styles from "../styles/profile.module.css";
-import { FileUpload } from "./components/FileUpload";
+import { FileUpload } from "../components/FileUpload";
 import { useRouter } from "next/router";
 
 const Profile = () => {

@@ -2,7 +2,7 @@ import { BrowserRouter } from "react-router-dom";
 import "../styles/globals.css";
 import { MoralisProvider } from "react-moralis";
 import { CookiesProvider } from "react-cookie";
-import InsureContext from "./context/InsureContext";
+import InsureContext from "../context/InsureContext";
 function MyApp({ Component, pageProps }) {
   return (
     <InsureContext>
@@ -17,6 +17,5 @@ function MyApp({ Component, pageProps }) {
     </InsureContext>
   );
 }
-
 
 export default MyApp;

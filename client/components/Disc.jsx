@@ -4,7 +4,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import styles from '../../styles/Disc.module.css'
+import styles from '../styles/Disc.module.css'
 
 const Disc = () => {
     return (

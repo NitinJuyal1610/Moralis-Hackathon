@@ -17,7 +17,7 @@ module.exports = {
       "/policy": { page: "/post", query: { title: "/policy" } },
       "/dashBoard": { page: "/post", query: { title: "/dashBoard" } },
       "/register": { page: "/post", query: { title: "/register" } },
-      "/profile": { page: "/post", query: { title: "/profile" } },
+      "/profile": { page: "/post", query: { title: "/profile" } }
     };
   },
 };

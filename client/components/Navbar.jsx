@@ -21,13 +21,13 @@ export const Navbar = () => {
       setDisabled(data1.isInsured);
     })();
   }, []);
-  const [menuIcon, setMenuIcon] = useState(false)
-  const [nav, setNav] = useState(false)
-  const ham_nav = useRef(0)
-  const size = useWindowSize()
+  const [menuIcon, setMenuIcon] = useState(false);
+  const [nav, setNav] = useState(false);
+  const ham_nav = useRef(0);
+  const size = useWindowSize();
   useEffect(() => {
-    size.width < 800 ? (setMenuIcon(true)) : (setMenuIcon(false))
-  }, [size.width])
+    size.width < 800 ? setMenuIcon(true) : setMenuIcon(false);
+  }, [size.width]);
 
   function useWindowSize() {
     const [windowSize, setWindowSize] = useState({
@@ -35,7 +35,7 @@ export const Navbar = () => {
       height: undefined,
     });
     useEffect(() => {
-      if (typeof window !== 'undefined') {
+      if (typeof window !== "undefined") {
         function handleResize() {
           setWindowSize({
             width: window.innerWidth,
@@ -76,7 +76,7 @@ export const Navbar = () => {
               </a>
             </Link>
             <>
-              {user ? (
+              {user && user.get("password") ? (
                 <>
                   <Link href="/">
                     <button

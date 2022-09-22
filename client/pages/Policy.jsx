@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import styles from "../styles/Policy.module.css";
 import Disc from "../components/Disc";
 import Calculator from "../components/Calculator";
-import { Web3Context } from "./context/InsureContext";
+import { Web3Context } from "../context/InsureContext";
 import { useMoralis } from "react-moralis";
 import { useRouter } from "next/router";
 const Policy = () => {

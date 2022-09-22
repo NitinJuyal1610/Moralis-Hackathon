@@ -192,7 +192,6 @@ const Profile = () => {
                   <input
                     className={styles.input}
                     type="text"
-                    placeholder={user?.get("NomineeName")[0]}
                     name="NomineeName"
                     value={NomineeName}
                     onChange={(e) => onChange(e)}
@@ -207,7 +206,6 @@ const Profile = () => {
                     type="text"
                     name="NomineeAddress"
                     value={NomineeAddress}
-                    placeholder={user?.get("NomineeAddress")[0]}
                     onChange={(e) => onChange(e)}
                     disabled={isButtonDisabled}
                   />

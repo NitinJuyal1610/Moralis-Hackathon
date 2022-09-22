@@ -135,7 +135,7 @@ const Policy = () => {
                 </h2>
                 <a
                   className={styles.Btn2}
-                  href="https://ipfs.io/ipfs/bafybeieqhxlige5ca2vhk4izqsw6gpic7ripd5jh5arbi7eeyz54yilkxy/Product.docx"
+                  href="https://ipfs.io/ipfs/bafybeiesflnsbv5tpqpmlt77kbrtdh2v736f6ntrjpwetyckont3j4tlt4/Policy Document.docx"
                   passHref={true}
                 >
                   Download brochure

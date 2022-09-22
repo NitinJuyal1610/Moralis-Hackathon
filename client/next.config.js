@@ -8,6 +8,13 @@ module.exports = {
     unoptimized: true,
   },
   exportPathMap: function () {
-    return { "/": { page: "/" } };
+    return {
+      "/": { page: "/" },
+      "/Policy": { page: "/Policy" },
+      "/Profile": { page: "/Profile" },
+      "/Dashboard": { page: "/Dashboard" },
+      "/Login": { page: "/Login" },
+      "/Register": { page: "/Register" },
+    };
   },
 };

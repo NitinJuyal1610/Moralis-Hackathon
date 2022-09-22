@@ -1,5 +1,5 @@
 const nextConfig = {
-  reactStrictMode: true,
+  exportTrailingSlash: true,
   swcMinify: true,
 };
 

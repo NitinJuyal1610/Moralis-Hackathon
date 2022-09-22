@@ -23,7 +23,7 @@ const Hero = () => {
                             <Link href="/policy">
                                 <button className={styles.btn}>See Plans</button>
                             </Link>
-                            <Link href="/pogin">
+                            <Link href="/login">
 
                                 <button className={styles.btn}>Login</button>
                             </Link>

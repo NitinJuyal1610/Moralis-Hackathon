@@ -20,10 +20,10 @@ const Hero = () => {
                         <h1 className={styles.heading_h2}>Customize Insurance Plan as you wish</h1>
                         <h1 className={styles.heading_h2}>Smart Contract based Claim process</h1>
                         <div className={styles.Btn_section}>
-                            <Link href="/Policy">
+                            <Link href="/policy">
                                 <button className={styles.btn}>See Plans</button>
                             </Link>
-                            <Link href="/Login">
+                            <Link href="/pogin">
 
                                 <button className={styles.btn}>Login</button>
                             </Link>

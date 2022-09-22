@@ -65,12 +65,12 @@ export const Navbar = () => {
         </div>
         <div className={styles.nav_item}>
           <li className={styles.nav_links}>
-            <Link href="/Policy" className={styles.Policy_Route}>
+            <Link href="/policy" className={styles.Policy_Route}>
               <a className={styles.nav_link} href="">
                 Policies
               </a>
             </Link>
-            <Link className={styles.Policy_Route} href="/Profile">
+            <Link className={styles.Policy_Route} href="/profile">
               <a className={styles.nav_link} href="">
                 Profile
               </a>
@@ -83,7 +83,7 @@ export const Navbar = () => {
                       className={styles.Signup_btn}
                       onClick={() => {
                         logout();
-                        router.push("/Policy");
+                        router.push("/policy");
                       }}
                       disabled={isAuthenticating}
                     >
@@ -91,13 +91,13 @@ export const Navbar = () => {
                     </button>
                   </Link>
                   {disabled && (
-                    <Link href="/DashBoard" className={styles.User_Route}>
+                    <Link href="/dashBoard" className={styles.User_Route}>
                       <button className={styles.Signup_btn}>Dashboard</button>
                     </Link>
                   )}
                 </>
               ) : (
-                <Link href="/Login" className={styles.User_Route}>
+                <Link href="/login" className={styles.User_Route}>
                   <button className={styles.Signup_btn}>Sign Up/login</button>
                 </Link>
               )}

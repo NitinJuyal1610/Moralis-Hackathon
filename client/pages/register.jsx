@@ -12,6 +12,8 @@ const Register = () => {
     email: "",
     phoneNumber: "",
     gender: "",
+    NomineeName:"",
+    NomineeAddress:"",
     password: "",
     ConPassword: "",
   });

@@ -73,7 +73,7 @@ const Profile = () => {
 
     user.save();
 
-    router.push("/Policy");
+    router.push("/policy");
   };
 
   return (

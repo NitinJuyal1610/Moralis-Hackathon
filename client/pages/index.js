@@ -3,7 +3,7 @@ import Image from "next/image";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styles from "../styles/Home.module.css";
 import Navbar from "../components/Navbar";
-import Register from "./Register";
+import Register from "./register";
 import Hero from "../components/Hero";
 import { useRouter } from "next/router";
 import { useMoralis } from "react-moralis";

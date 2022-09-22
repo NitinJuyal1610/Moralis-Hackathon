@@ -29,7 +29,7 @@ const Policy = () => {
 
     const data1 = await getInfo();
     if (data1.isInsured) {
-      router.push("/DashBoard");
+      router.push("/dashBoard");
     }
   };
 

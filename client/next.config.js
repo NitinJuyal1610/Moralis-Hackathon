@@ -7,14 +7,18 @@ module.exports = {
   images: {
     unoptimized: true,
   },
-  exportPathMap: function () {
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
     return {
       "/": { page: "/" },
-      "/Policy": { page: "/Policy" },
-      "/Profile": { page: "/Profile" },
-      "/Dashboard": { page: "/Dashboard" },
-      "/Login": { page: "/Login" },
-      "/Register": { page: "/Register" },
+      "/login": { page: "/login" },
+      "/policy": { page: "/post", query: { title: "/policy" } },
+      "/dashBoard": { page: "/post", query: { title: "/dashBoard" } },
+      "/register": { page: "/post", query: { title: "/register" } },
+      "/profile": { page: "/post", query: { title: "/profile" } }
     };
   },
 };
+

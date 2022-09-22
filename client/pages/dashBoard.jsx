@@ -46,7 +46,7 @@ const DashBoard = () => {
       try {
         await claim(data.owner, 1);
         console.log("claimed SuccessFully");
-        router.push("/Policy");
+        router.push("/policy");
       } catch (error) {
         console.log(error);
       }

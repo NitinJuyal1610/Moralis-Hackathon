@@ -48,7 +48,7 @@ const Register = () => {
           onSuccess: () => {
             console.log("done");
             setTimeout(function () {
-              router.push("/Profile");
+              router.push("/profile");
             }, 500);
           },
         }

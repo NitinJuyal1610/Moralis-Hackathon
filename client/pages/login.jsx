@@ -58,7 +58,7 @@ const Login = () => {
                 </div>
               </div>
               <div className={styles.action}>
-                <Link href="/Register" className={styles.User_Route}>
+                <Link href="/register" className={styles.User_Route}>
                   <button>Register</button>
                 </Link>
                 <button
@@ -72,7 +72,7 @@ const Login = () => {
 
                         onSuccess: () => {
                           setTimeout(function () {
-                            router.push("/Profile");
+                            router.push("/profile");
                           }, 1000);
                         },
                       });

@@ -81,6 +81,30 @@ const Profile = () => {
       <div className={styles.body}>
         <div className={styles.left_side}>
           <div className={styles.left_box}>
+            <div>
+              {user?.get("ProfileImage") ? (
+                <img className={styles.image} src={user.get("ProfileImage")} />
+              ) : (
+                //add image uploader
+
+                <div>
+                  <img className={styles.image} src="/img.jpg"></img>
+                  <br />
+                  <input
+                    onChange={(e) => {
+                      handleSubmission(e.target.files);
+                    }}
+                    type="file"
+                    id="files"
+                    hidden={true}
+                  />
+                  <label className={styles.upload} for="files">
+                    Select Profile Image
+                  </label>
+                </div>
+              )}
+            </div>
+
             <p className={styles.name}>
               <b>Name :</b>
               {user?.get("username")}

@@ -1,5 +1,6 @@
 # SmartInsure-insurance-CONTRACT
-Under this Project ( Insurechain) we had designed the insurance products which are far more Efficient, Fast, Secure, Safe, Transparent or Trustworthy.  Than any other Web 2.0 Insurance products, which involve the human interference. </br>
+
+Under this Project ( Insurechain) we had designed the insurance products which are far more Efficient, Fast, Secure, Safe, Transparent or Trustworthy. Than any other Web 2.0 Insurance products, which involve the human interference. </br>
 
 As of now we have launched our only product - Term Life Insurance</br>
 
@@ -29,13 +30,13 @@ As of now we have launched our only product - Term Life Insurance</br>
 
 - Contract deployed on Polygon Mumbai test network at:
 
-> [chainlinkAggregator Contract Address](https://mumbai.polygonscan.com/address/0x62112087302d981159b8D46A812E05860fD2eF97)
+> [chainlinkAggregator Contract Address](https://mumbai.polygonscan.com/address/0x31D6249A475BC57FE0AB1DaC702351bE0954C37C)
 
 ## insurance.sol contarct
 
 - Contract deployed on Polygon Mumbai test network at:
 
-> [insurance Proxy Contract Address](https://mumbai.polygonscan.com/address/0xDa9974d844F56c02Ae274E2Ce2E157fC225F4b57) </br>  [insurance implementation Contract Address](https://mumbai.polygonscan.com/address/0x8e78EF7B43014404b1Ff5278E940231FFd6E38F9) </br>
+> [insurance Proxy Contract Address](https://mumbai.polygonscan.com/address/0xDa9974d844F56c02Ae274E2Ce2E157fC225F4b57) </br> [insurance implementation Contract Address](https://mumbai.polygonscan.com/address/0x8e78EF7B43014404b1Ff5278E940231FFd6E38F9) </br>
 
 #### Function addNewpaymentcoin
 
@@ -56,7 +57,6 @@ As of now we have launched our only product - Term Life Insurance</br>
 
 - lets users buy insurance </br>
 - Tx hash:- [claimInsurance](https://mumbai.polygonscan.com/tx/0xe74b83bc31dc3d86ab978dbd26bd75e2a457a8ff82787b16d9e62d8ed7ecef8a) </br>
-
 
 ## Requirements For Initial Setup
 

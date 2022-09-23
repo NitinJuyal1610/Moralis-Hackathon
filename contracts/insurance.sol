@@ -201,6 +201,7 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
             false
         );
 
+        IERC20Upgradeable(paymentCoinAddress).approve(address(this),amount);
         IERC20Upgradeable(paymentCoinAddress).safeTransferFrom(
             msgSender, // on hold
             address(this),
@@ -319,7 +320,7 @@ contract insurance is OwnableUpgradeable, UUPSUpgradeable {
         address priceFeed = ListOfpaymentCoins[_paymentCoinID].priceFeed;
         uint256 amount = amountOfCoinsToSend(priceFeed, premium) * 10**18;
         uint256 currentTimeStamp = block.timestamp;
-
+        IERC20Upgradeable(paymentCoinAddress).approve(address(this),amount);
         IERC20Upgradeable(paymentCoinAddress).safeTransferFrom(
             msgSender, // on hold
             address(this),

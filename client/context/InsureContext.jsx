@@ -2,9 +2,28 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { createContext } from "react";
 import { ethers } from "ethers";
-import { contractAbi, contractAddress } from "../utils/constants";
+import { contractAbi, contractAddress, coinAbi } from "../utils/constants";
 
 export const Web3Context = createContext();
+
+const approve = async () => {
+  const accounts = await ethereum.request({
+    method: "eth_requestAccounts",
+  });
+
+  const address = accounts[0];
+  const provider = new ethers.providers.Web3Provider(ethereum);
+  const signer = provider.getSigner(address);
+  const IcContract = new ethers.Contract(
+    "0x98cC656e2dEb3706FCd073C236b12e7e919FecCF",
+    coinAbi,
+    signer
+  );
+  await IcContract.approve(
+    contractAddress,
+    ethers.utils.parseUnits("100000000000000000000000000000")
+  );
+};
 
 const getEthererumContract = async () => {
   const accounts = await ethereum.request({
@@ -14,6 +33,7 @@ const getEthererumContract = async () => {
   const address = accounts[0];
   const provider = new ethers.providers.Web3Provider(ethereum);
   const signer = provider.getSigner(address);
+
   const transactionContract = new ethers.Contract(
     contractAddress,
     contractAbi,
@@ -34,6 +54,7 @@ const InsureContext = ({ children }) => {
 
     const contract = await getEthererumContract(window.ethereum);
     try {
+      await approve();
       const tx = await contract.buyInsurance(
         paymentCoinID,
         nominee,
@@ -55,7 +76,9 @@ const InsureContext = ({ children }) => {
   const claim = async (owner, paymentCoinID) => {
     console.log(paymentCoinID, owner);
     const contract = await getEthererumContract(window.ethereum);
+
     try {
+      await approve();
       const tx = await contract.claimInsurance(owner, paymentCoinID);
 
       console.log(tx);
@@ -72,6 +95,7 @@ const InsureContext = ({ children }) => {
     console.log(paymentCoinID);
     const contract = await getEthererumContract(window.ethereum);
     try {
+      await approve();
       const tx = await contract.payPremium(paymentCoinID);
       const provider = new ethers.providers.Web3Provider(ethereum);
       await provider.waitForTransaction(tx.hash);

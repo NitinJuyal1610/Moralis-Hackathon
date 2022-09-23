@@ -6,11 +6,14 @@ import { contractAbi, contractAddress } from "../utils/constants";
 
 export const Web3Context = createContext();
 
-const getEthererumContract = () => {
+const getEthererumContract = async () => {
+  const accounts = await ethereum.request({
+    method: "eth_requestAccounts",
+  });
+  console.log(accounts);
+  const address = accounts[0];
   const provider = new ethers.providers.Web3Provider(ethereum);
-  const signer = provider.getSigner(
-    "0xd8f6504034Efc1EFFB33e81F5dF1b73eC7E291A2"
-  );
+  const signer = provider.getSigner(address);
   const transactionContract = new ethers.Contract(
     contractAddress,
     contractAbi,
@@ -28,7 +31,8 @@ const InsureContext = ({ children }) => {
     timePeriod
   ) => {
     console.log(paymentCoinID, nominee, age, insuredAmount, timePeriod);
-    const contract = getEthererumContract(window.ethereum);
+
+    const contract = await getEthererumContract(window.ethereum);
     try {
       const tx = await contract.buyInsurance(
         paymentCoinID,
@@ -50,7 +54,7 @@ const InsureContext = ({ children }) => {
 
   const claim = async (owner, paymentCoinID) => {
     console.log(paymentCoinID, owner);
-    const contract = getEthererumContract(window.ethereum);
+    const contract = await getEthererumContract(window.ethereum);
     try {
       const tx = await contract.claimInsurance(owner, paymentCoinID);
 
@@ -66,7 +70,7 @@ const InsureContext = ({ children }) => {
 
   const payPrem = async (paymentCoinID) => {
     console.log(paymentCoinID);
-    const contract = getEthererumContract(window.ethereum);
+    const contract = await getEthererumContract(window.ethereum);
     try {
       const tx = await contract.payPremium(paymentCoinID);
       const provider = new ethers.providers.Web3Provider(ethereum);
@@ -79,7 +83,7 @@ const InsureContext = ({ children }) => {
     }
   };
   const checkPremium = async (age, amount, years) => {
-    const contract = getEthererumContract(window.ethereum);
+    const contract = await getEthererumContract(window.ethereum);
     console.log(age, amount, years);
 
     const premium = await contract.calculatePremium(age, years, amount);
@@ -87,7 +91,7 @@ const InsureContext = ({ children }) => {
   };
 
   const getInfo = async () => {
-    const contract = getEthererumContract(window.ethereum);
+    const contract = await getEthererumContract(window.ethereum);
     const data = await contract.getInsuranceInfo();
     return data;
   };

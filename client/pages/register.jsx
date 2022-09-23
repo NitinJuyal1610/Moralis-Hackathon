@@ -12,12 +12,10 @@ const Register = () => {
     email: "",
     phoneNumber: "",
     gender: "",
-    NomineeName:"",
-    NomineeAddress:"",
     password: "",
     ConPassword: "",
   });
-  const { username, email, phoneNumber, gender, NomineeName,NomineeAddress, password, ConPassword } =
+  const { username, email, phoneNumber, gender, password, ConPassword } =
     formData;
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -35,8 +33,6 @@ const Register = () => {
           phoneNumber: phoneNumber,
           gender: gender,
           DeathCertNumber: DeathCertNumber,
-          NomineeName: NomineeName,
-          NomineeAddress: NomineeAddress,
         },
         {
           onError: () => {
@@ -115,30 +111,7 @@ const Register = () => {
                       required
                     />
                   </div>
-                  <div className={styles.input_box}>
-                    <span className={styles.details}>Nominee</span>
-                    <input
-                      className={styles.input}
-                      type="text"
-                      name="Nominee"
-                      value={NomineeName}
-                      placeholder="Nominee Name"
-                      onChange={(e) => onChange(e)}
-                      required
-                    />
-                  </div>
-                  <div className={styles.input_box}>
-                    <span className={styles.details}>Nominee Wallet Address</span>
-                    <input
-                      className={styles.input}
-                      type="text"
-                      name="NomineeAddress"
-                      value={NomineeAddress}
-                      placeholder="Nominee Address"
-                      onChange={(e) => onChange(e)}
-                      required
-                    />
-                  </div>
+                 
                   <div className={styles.input_box}>
                     <span className={styles.details}>Password</span>
                     <input

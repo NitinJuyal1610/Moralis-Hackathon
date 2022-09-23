@@ -35,7 +35,6 @@ const Profile = () => {
 
   const UpdateInfo = (e) => {
     e.preventDefault();
-    console.log(username, email, { phoneNumber: phoneNumber });
 
     if (username.length) {
       user.set("username", username);

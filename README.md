@@ -45,17 +45,17 @@ As of now we have launched our only product - Term Life Insurance</br>
 #### Function buyInsurance
 
 - lets users buy insurance </br>
-- Tx hash:- [buyInsurance](https://mumbai.polygonscan.com/tx/0xd432a2b5d56de2dba04f021e6b2cc008cead72f6db7961758c5723d1e3419deb) </br>
+- Tx hash:- [buyInsurance](https://mumbai.polygonscan.com/tx/0xf5a4cdf37985ef731fbc37d7e86a79132d308b025db9787c3ec084953a7ae6c7) </br>
 
 #### Function payPremium
 
 - users can pay premium, once they miss last premium date they cannot pay premium again as of now, would add fine functionality later</br>
-- Tx hash:- [payPremium](https://mumbai.polygonscan.com/tx/0xd432a2b5d56de2dba04f021e6b2cc008cead72f6db7961758c5723d1e3419deb) </br>
+- Tx hash:- [payPremium](https://mumbai.polygonscan.com/tx/0x2d43dc5d1b3b9eaf3af8c7139a5bf8a4e05eee8a7bc59df1e54f91e1560c5803) </br>
 
 #### Function claimInsurance
 
 - lets users buy insurance </br>
-- Tx hash:- [claimInsurance](https://mumbai.polygonscan.com/tx/0xd432a2b5d56de2dba04f021e6b2cc008cead72f6db7961758c5723d1e3419deb) </br>
+- Tx hash:- [claimInsurance](https://mumbai.polygonscan.com/tx/0xe74b83bc31dc3d86ab978dbd26bd75e2a457a8ff82787b16d9e62d8ed7ecef8a) </br>
 
 
 ## Requirements For Initial Setup
